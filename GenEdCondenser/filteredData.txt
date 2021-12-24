@@ -1,16 +1,16 @@
 AGEC - Agricultural Economics	21700	Economics	Behavioral/Social Science (BSS)	Summer 2021,Fall 2021,Spring 2022
 AMST - American Studies	10100	*America and the World	Written Communication (WC)	Summer 2021,Fall 2021,Spring 2022
 AMST - American Studies	20100	Interpreting America	Humanities (H)	Summer 2021,Fall 2021,Spring 2022
-AMST - American Studies	20100	African American Pop Culture	Humanities (H)	
-AMST - American Studies	20100	American Social Movements-Honors	Humanities (H)	
-AMST - American Studies	20100	Asian American Pop Culture	Humanities (H)	
-AMST - American Studies	20100	Automobiles in America	Humanities (H)	
-AMST - American Studies	20100	Fan Users and Games	Humanities (H)	
-AMST - American Studies	20100	Global habitats, Community Development & Sustainability	Humanities (H)	
-AMST - American Studies	20100	Intro Asian American Studies	Humanities (H)	
-AMST - American Studies	20100	Intro to American Studies: Arab-American Literature	Humanities (H)	
-AMST - American Studies	20100	Electronic Music & Pop Culture		
-AMST - American Studies	20100	Fashion & Technology		
+AMST - American Studies	20100	African American Pop Culture	Humanities (H)
+AMST - American Studies	20100	American Social Movements-Honors	Humanities (H)
+AMST - American Studies	20100	Asian American Pop Culture	Humanities (H)
+AMST - American Studies	20100	Automobiles in America	Humanities (H)
+AMST - American Studies	20100	Fan Users and Games	Humanities (H)
+AMST - American Studies	20100	Global habitats, Community Development & Sustainability	Humanities (H)
+AMST - American Studies	20100	Intro Asian American Studies	Humanities (H)
+AMST - American Studies	20100	Intro to American Studies: Arab-American Literature	Humanities (H)
+AMST - American Studies	20100	Electronic Music & Pop Culture
+AMST - American Studies	20100	Fashion & Technology
 AMST - American Studies	30100	Asian Amer Pop Cul		Fall 2021,Spring 2022
 AMST - American Studies	30100	*Intro Asian American Studies		Fall 2021,Spring 2022
 AMST - American Studies	30100	Perspectives on America		Spring 2022
@@ -18,33 +18,33 @@ AMST - American Studies	30100	Sports & Popular Feminisms		Spring 2022
 AMST - American Studies	30100	Afro-Asia Pol & Cul Alli		Fall 2021
 AMST - American Studies	30100	New Media		Fall 2021
 AMST - American Studies	30100	Post Soul Black Lit Post 1960		Fall 2021
-AMST - American Studies	30100	1960's America		
-AMST - American Studies	30100	1960's Revolution		
-AMST - American Studies	30100	African-American Protest Lit		
-AMST - American Studies	30100	American Beauty		
-AMST - American Studies	30100	American Representations of the Middle East and North Africa		
-AMST - American Studies	30100	American Studies/Global Studies		
-AMST - American Studies	30100	American Virgin		
-AMST - American Studies	30100	Arabic Lit in Translation		
-AMST - American Studies	30100	Contemporary Isses in Asian American Studies		
-AMST - American Studies	30100	Data Viz For Societal Problems		
-AMST - American Studies	30100	Democracy and Education		
-AMST - American Studies	30100	Electr Music & Pop Cult		
-AMST - American Studies	30100	Food in Modern America		
-AMST - American Studies	30100	Gender, Media & Pop Culture		
-AMST - American Studies	30100	Glb Hlth Sustainblty & Com Dev		
-AMST - American Studies	30100	Global Hist Theory & Practice		
-AMST - American Studies	30100	Muslims in America		
-AMST - American Studies	30100	New Media Culture		
-AMST - American Studies	30100	North African Lit & Culture		
-AMST - American Studies	30100	Social Issues Immigration		
-AMST - American Studies	30100	Spanish American Literature in Translation		
-AMST - American Studies	30100	Sport/Gender		
-AMST - American Studies	30100	Technology, Culture & Society		
-AMST - American Studies	30100	The 1960's Rock to Revolution		
-AMST - American Studies	30100	Theories of Global Studies		
-AMST - American Studies	30100	Understanding the NFL		
-AMST - American Studies	30100	Virtual Reality		
+AMST - American Studies	30100	1960's America
+AMST - American Studies	30100	1960's Revolution
+AMST - American Studies	30100	African-American Protest Lit
+AMST - American Studies	30100	American Beauty
+AMST - American Studies	30100	American Representations of the Middle East and North Africa
+AMST - American Studies	30100	American Studies/Global Studies
+AMST - American Studies	30100	American Virgin
+AMST - American Studies	30100	Arabic Lit in Translation
+AMST - American Studies	30100	Contemporary Isses in Asian American Studies
+AMST - American Studies	30100	Data Viz For Societal Problems
+AMST - American Studies	30100	Democracy and Education
+AMST - American Studies	30100	Electr Music & Pop Cult
+AMST - American Studies	30100	Food in Modern America
+AMST - American Studies	30100	Gender, Media & Pop Culture
+AMST - American Studies	30100	Glb Hlth Sustainblty & Com Dev
+AMST - American Studies	30100	Global Hist Theory & Practice
+AMST - American Studies	30100	Muslims in America
+AMST - American Studies	30100	New Media Culture
+AMST - American Studies	30100	North African Lit & Culture
+AMST - American Studies	30100	Social Issues Immigration
+AMST - American Studies	30100	Spanish American Literature in Translation
+AMST - American Studies	30100	Sport/Gender
+AMST - American Studies	30100	Technology, Culture & Society
+AMST - American Studies	30100	The 1960's Rock to Revolution
+AMST - American Studies	30100	Theories of Global Studies
+AMST - American Studies	30100	Understanding the NFL
+AMST - American Studies	30100	Virtual Reality
 AMST - American Studies	31000	Invention, Innovation and Design	Humanities (H),Science Technology and Society (STS)	Fall 2021
 AMST - American Studies	32000	Understanding the NFL		Fall 2021
 AMST - American Studies	32500	Sports, Technology and Innovation	Humanities (H),Science Technology and Society (STS)	Fall 2021
@@ -57,49 +57,49 @@ ANTH - Anthropology	21000	Technology & Culture	Science Technology and Society (S
 ANTH - Anthropology	21200	Culture, Food & Health		Fall 2021,Spring 2022
 ANTH - Anthropology	23000	*Gender Across Cultures	Behavioral/Social Science (BSS)	Fall 2021,Spring 2022
 ANTH - Anthropology	23500	The Great Apes		Fall 2021
-ANTH - Anthropology	25400	Arch Hoaxes, Myths and Frauds		
+ANTH - Anthropology	25400	Arch Hoaxes, Myths and Frauds
 ANTH - Anthropology	25600	*Archaeology of Beer		Spring 2022
-ANTH - Anthropology	28200	Introduction to LGBT Studies		
+ANTH - Anthropology	28200	Introduction to LGBT Studies
 ANTH - Anthropology	30700	Anthropological Theory		Fall 2021
 ANTH - Anthropology	31000	Mortuary Practices Across Cultures		Fall 2021
-ANTH - Anthropology	31100	The Archaeology Of The Ancient Andes		
+ANTH - Anthropology	31100	The Archaeology Of The Ancient Andes
 ANTH - Anthropology	31200	Archaeology of Egypt		Summer 2021,Spring 2022
 ANTH - Anthropology	31300	Archaeology of North America		Fall 2021
-ANTH - Anthropology	32000	Ancient States & Empires		
-ANTH - Anthropology	32600	Sustainability Studies		
-ANTH - Anthropology	32700	Environment And Culture		
+ANTH - Anthropology	32000	Ancient States & Empires
+ANTH - Anthropology	32600	Sustainability Studies
+ANTH - Anthropology	32700	Environment And Culture
 ANTH - Anthropology	33500	Primate Behavior		Spring 2022
-ANTH - Anthropology	33600	*Human Variation		
-ANTH - Anthropology	33700	Human Diet: Origins and Evolution		
+ANTH - Anthropology	33600	*Human Variation
+ANTH - Anthropology	33700	Human Diet: Origins and Evolution
 ANTH - Anthropology	34000	*Global Perspectives on Health		Summer 2021,Fall 2021,Spring 2022
-ANTH - Anthropology	34100	*Culture and Personality		
-ANTH - Anthropology	35200	Drugs, Culture & Society		
-ANTH - Anthropology	37300	Anthropology of Religion		
-ANTH - Anthropology	37700	Anthropology of Hunter-Gatherer Societies		
-ANTH - Anthropology	37800	Archaeology and Cultural Anthropology of Mesoamerica (Mexico, Belize and Guatemala)		
+ANTH - Anthropology	34100	*Culture and Personality
+ANTH - Anthropology	35200	Drugs, Culture & Society
+ANTH - Anthropology	37300	Anthropology of Religion
+ANTH - Anthropology	37700	Anthropology of Hunter-Gatherer Societies
+ANTH - Anthropology	37800	Archaeology and Cultural Anthropology of Mesoamerica (Mexico, Belize and Guatemala)
 ANTH - Anthropology	37900	*Native American Cultures	Behavioral/Social Science (BSS)	Fall 2021,Spring 2022
-ANTH - Anthropology	38000	Using Anthropology in the World		
+ANTH - Anthropology	38000	Using Anthropology in the World
 ANTH - Anthropology	38400	Designing for People		Fall 2021,Spring 2022
 ANTH - Anthropology	39200	Evidence:How Things BecomeTrue		Spring 2022
 ANTH - Anthropology	39200	Amazonia and Film		Fall 2021
-ANTH - Anthropology	39200	Anthropology of Beer Craft		
-ANTH - Anthropology	39200	Anthropology Of Violence		
-ANTH - Anthropology	39200	Anthropology of Water: Development & Justice		
-ANTH - Anthropology	39200	Archaeology of Beer		
-ANTH - Anthropology	39200	Blackness and Culture		
-ANTH - Anthropology	39200	Critical Approach to Sci&Tech		
-ANTH - Anthropology	39200	Intro to Forensic Anthropology		
-ANTH - Anthropology	39200	Myths & Hoaxes in Archaeology		
-ANTH - Anthropology	39200	Pregnancy Birth & Babies		
-ANTH - Anthropology	39200	Race & Religion in the U.S.		
-ANTH - Anthropology	39200	Sustain,Dev&SovernAfrca-Honors		
-ANTH - Anthropology	39200	Urban-Rural Change Latin America		
-ANTH - Anthropology	39200	Visual Anthropology		
-ARAB - Arabic	23000	Arabic Literature In Translation		
+ANTH - Anthropology	39200	Anthropology of Beer Craft
+ANTH - Anthropology	39200	Anthropology Of Violence
+ANTH - Anthropology	39200	Anthropology of Water: Development & Justice
+ANTH - Anthropology	39200	Archaeology of Beer
+ANTH - Anthropology	39200	Blackness and Culture
+ANTH - Anthropology	39200	Critical Approach to Sci&Tech
+ANTH - Anthropology	39200	Intro to Forensic Anthropology
+ANTH - Anthropology	39200	Myths & Hoaxes in Archaeology
+ANTH - Anthropology	39200	Pregnancy Birth & Babies
+ANTH - Anthropology	39200	Race & Religion in the U.S.
+ANTH - Anthropology	39200	Sustain,Dev&SovernAfrca-Honors
+ANTH - Anthropology	39200	Urban-Rural Change Latin America
+ANTH - Anthropology	39200	Visual Anthropology
+ARAB - Arabic	23000	Arabic Literature In Translation
 ARAB - Arabic	23900	Arab Women Writers		Fall 2021
 ARAB - Arabic	28000	Arabic Culture	Humanities (H)	Fall 2021
 ARAB - Arabic	28100	*Intro to Islamic Civilization and Culture		Spring 2022
-ARAB - Arabic	33400	*North African Literature And Culture		
+ARAB - Arabic	33400	*North African Literature And Culture
 ASL - American Sign Language	28000	American Deaf Community: Language, Culture, And Society		Spring 2022
 COM - Communication	22400	*Communicating In The Global Workplace	Behavioral/Social Science (BSS)	Summer 2021,Fall 2021,Spring 2022
 COM - Communication	25000	Mass Communication And Society		Summer 2021,Fall 2021,Spring 2022
@@ -109,35 +109,35 @@ COM - Communication	31400	Advanced Presentational Speaking		Summer 2021,Fall 202
 COM - Communication	31500	Speech Communication Of Technical Information		Fall 2021,Spring 2022
 COM - Communication	31800	Principles Of Persuasion		Summer 2021,Fall 2021,Spring 2022
 COM - Communication	32000	Small Group Communication		Summer 2021,Fall 2021,Spring 2022
-COM - Communication	32900	History Of The Mass Media		
+COM - Communication	32900	History Of The Mass Media
 COM - Communication	35100	Mass Communication Ethics		Fall 2021
 ENTR - Entrepreneurship	20000	Intro to Entrepreneurship & Innovation		Summer 2021,Fall 2021,Spring 2022
 ENTR - Entrepreneurship	31000	Marketing and Management for New Ventures		Summer 2021,Fall 2021,Spring 2022
 FR - French	24100	Introduction To The Study Of French Literature		Fall 2021,Spring 2022
 FR - French	33000	French Cinema	Humanities (H)	Fall 2021
-FR - French	34200	French Literature II		
+FR - French	34200	French Literature II
 FR - French	38000	French Food Culture		Spring 2022
-FR - French	38000	Sport/Spectacle Berlin/Paris		
-FR - French	39400	French Caribbean Literatures		
-FR - French	39400	Out of Africa		
+FR - French	38000	Sport/Spectacle Berlin/Paris
+FR - French	39400	French Caribbean Literatures
+FR - French	39400	Out of Africa
 HDFS - Human Development and Family Studies	21000	Introduction to Human Development		Summer 2021,Fall 2021,Spring 2022
 HEBR - Hebrew	28400	Ancient Near Easter History & Culture		Fall 2021
-HEBR - Hebrew	38000	Israel & the Modern World	Humanities (H)	
-HONR - Honors	19900	Beyond Afghanistan		
-HONR - Honors	29900	Underground Networks		
+HEBR - Hebrew	38000	Israel & the Modern World	Humanities (H)
+HONR - Honors	19900	Beyond Afghanistan
+HONR - Honors	29900	Underground Networks
 HONR - Honors	39900	Beyond Afghanistan		Spring 2022
-HONR - Honors	39900	Human Redesign Calendar		
+HONR - Honors	39900	Human Redesign Calendar
 ILS - Interdisciplinary Studies	23000	Data Science & Society		Spring 2022
 JWST - Jewish Studies	33000	Introduction to Jewish Studies	Humanities (H)	Summer 2021,Spring 2022
-KOR - Korean	38000	Dating, Sex & Marriage - Korea		
+KOR - Korean	38000	Dating, Sex & Marriage - Korea
 LALS - Latin American and Latino Studies	25000	*Introduction To Latin American And Latino Studies		Spring 2022
-LALS - Latin American and Latino Studies	26000	U S Latino Culture		
-LALS - Latin American and Latino Studies	30100	Hispanic Lit I		
-MARS - Medieval and Renaissance Studies	22000	Arthurian Literature: Medieval to Modern		
-MARS - Medieval and Renaissance Studies	22000	Dragons		
-MARS - Medieval and Renaissance Studies	22000	Love, Sex, and Gender in West European Literature		
-MARS - Medieval and Renaissance Studies	22000	Middle Ages on Film		
-MARS - Medieval and Renaissance Studies	22000	Pirates!		
+LALS - Latin American and Latino Studies	26000	U S Latino Culture
+LALS - Latin American and Latino Studies	30100	Hispanic Lit I
+MARS - Medieval and Renaissance Studies	22000	Arthurian Literature: Medieval to Modern
+MARS - Medieval and Renaissance Studies	22000	Dragons
+MARS - Medieval and Renaissance Studies	22000	Love, Sex, and Gender in West European Literature
+MARS - Medieval and Renaissance Studies	22000	Middle Ages on Film
+MARS - Medieval and Renaissance Studies	22000	Pirates!
 MGMT - Management	20000	Introductory Accounting		Summer 2021,Fall 2021,Spring 2022
 MGMT - Management	20010	Mgmt Accounting I		Spring 2022
 MGMT - Management	21200	Business Accounting		Summer 2021,Fall 2021,Spring 2022
@@ -150,30 +150,30 @@ OBHR - Organizational Behavior and Human Resource	33000	Introduction to Organiza
 PHIL - Philosophy	11000	Big Questions: Intro to Philosophy	Humanities (H)	Summer 2021,Fall 2021,Spring 2022
 PHIL - Philosophy	11100	Ethics	Humanities (H)	Summer 2021,Fall 2021,Spring 2022
 PHIL - Philosophy	11400	*Global Moral Issues	Humanities (H)	Summer 2021,Fall 2021,Spring 2022
-PHIL - Philosophy	12000	Critical Thinking	Information Literacy (IL)	
+PHIL - Philosophy	12000	Critical Thinking	Information Literacy (IL)
 PHIL - Philosophy	20600	Philosophy of Religion	Humanities (H)	Fall 2021
 PHIL - Philosophy	20700	Ethics for Tech, Engr, Design	Science Technology and Society (STS)	Spring 2022
 PHIL - Philosophy	20800	Ethics of Data Science		Fall 2021
 PHIL - Philosophy	21900	Phil & the Meaning of Life	Humanities (H)	Fall 2021
 PHIL - Philosophy	22100	Introduction To Philosophy Of Science	Science Technology and Society (STS)	Fall 2021
 PHIL - Philosophy	22300	Fate and Free Will	Humanities (H)	Fall 2021
-PHIL - Philosophy	22500	Philosophy and Gender	Humanities (H)	
+PHIL - Philosophy	22500	Philosophy and Gender	Humanities (H)
 PHIL - Philosophy	23000	Religions of the East	Humanities (H)	Fall 2021,Spring 2022
 PHIL - Philosophy	23100	Religions of the West	Humanities (H)	Fall 2021,Spring 2022
 PHIL - Philosophy	24000	Social and Political Philosophy	Humanities (H)	Fall 2021,Spring 2022
-PHIL - Philosophy	24200	Philosophy, Culture, And The African American Experience	Humanities (H)	
+PHIL - Philosophy	24200	Philosophy, Culture, And The African American Experience	Humanities (H)
 PHIL - Philosophy	26000	Philosophy and Law	Written Communication (WC),Information Literacy (IL)	Summer 2021
 PHIL - Philosophy	27000	Biomedical Ethics	Science Technology and Society (STS)	Summer 2021,Fall 2021,Spring 2022
 PHIL - Philosophy	27500	Philosophy of Art	Humanities (H)	Fall 2021
 PHIL - Philosophy	28000	Ethics and Animals	Humanities (H)	Fall 2021
 PHIL - Philosophy	29000	Environmental Ethics	Humanities (H)	Summer 2021,Spring 2022
-PHIL - Philosophy	29300	Ethics for Data Sciences		
-PHIL - Philosophy	29300	Philosophy of Disability		
+PHIL - Philosophy	29300	Ethics for Data Sciences
+PHIL - Philosophy	29300	Philosophy of Disability
 PHIL - Philosophy	30100	History of Ancient Philosophy	Humanities (H)	Fall 2021,Spring 2022
 PHIL - Philosophy	30200	History of Medieval Philosophy	Humanities (H)	Fall 2021
 PHIL - Philosophy	30300	History of Modern Philosophy	Humanities (H)	Fall 2021,Spring 2022
-PHIL - Philosophy	30400	19th Cent Philosophy	Humanities (H)	
-PHIL - Philosophy	30600	Twentieth-Century Philosophy		
+PHIL - Philosophy	30400	19th Cent Philosophy	Humanities (H)
+PHIL - Philosophy	30600	Twentieth-Century Philosophy
 PHIL - Philosophy	32200	Philosophy of Technology		Spring 2022
 PSY - Psychology	12000	Elementary Psychology	Behavioral/Social Science (BSS)	Summer 2021,Fall 2021,Spring 2022
 PSY - Psychology	20000	Introduction To Cognitive Psychology		Summer 2021,Fall 2021,Spring 2022
@@ -183,9 +183,9 @@ PSY - Psychology	23900	The Psychology Of Women		Summer 2021
 PSY - Psychology	24000	Introduction To Social Psychology		Summer 2021,Fall 2021,Spring 2022
 PSY - Psychology	24400	*Introduction To Human Sexuality		Fall 2021,Spring 2022
 PSY - Psychology	27200	Introduction To Industrial-Organizational Psychology		Summer 2021,Fall 2021,Spring 2022
-PSY - Psychology	29200	Intro to Clincial Psych		
-PSY - Psychology	29200	Intro to Neuropsychology		
-PSY - Psychology	29200	Science of Well Being		
+PSY - Psychology	29200	Intro to Clincial Psych
+PSY - Psychology	29200	Intro to Neuropsychology
+PSY - Psychology	29200	Science of Well Being
 PSY - Psychology	31000	Sensory And Perceptual Processes		Fall 2021
 PSY - Psychology	31100	Human Memory		Spring 2022
 PSY - Psychology	31400	Introduction to Learning		Fall 2021
@@ -193,54 +193,54 @@ PSY - Psychology	32400	Introduction to Cognitive Neuroscience		Spring 2022
 PSY - Psychology	32700	Psychology of Helping		Fall 2021
 PSY - Psychology	33500	Stereotyping And Prejudice		Summer 2021,Fall 2021,Spring 2022
 PSY - Psychology	33600	Issues In Developmental Psychology		Spring 2022
-PSY - Psychology	33700	Social Cognition		
+PSY - Psychology	33700	Social Cognition
 PSY - Psychology	34200	Introduction To Psychology Of Personality		Summer 2021,Fall 2021,Spring 2022
 PSY - Psychology	35000	Abnormal Psychology		Summer 2021,Fall 2021,Spring 2022
 PSY - Psychology	35200	Intro to Neuropsychology		Spring 2022
 PSY - Psychology	35400	Close Relationships		Fall 2021,Spring 2022
-PSY - Psychology	36100	Human Development I: Infancy And Childhood		
-PSY - Psychology	36700	Adult Development And Aging		
+PSY - Psychology	36100	Human Development I: Infancy And Childhood
+PSY - Psychology	36700	Adult Development And Aging
 PSY - Psychology	37600	Attention & Cognitive Control		Spring 2022
 PSY - Psychology	38000	Behavior Change Methods		Spring 2022
 PSY - Psychology	39200	Eating Disorders & Obesity		Fall 2021
-PSY - Psychology	39200	Attention & Cognitive Control		
-PSY - Psychology	39200	Beh/Neural Sys Learn & Mem		
-PSY - Psychology	39200	Close Relationships		
-PSY - Psychology	39200	Cognitive Neurosci of Vision		
-PSY - Psychology	39200	Diversity and Inclusion		
-PSY - Psychology	39200	Foods and Behavior		
-PSY - Psychology	39200	Intro to Clinical Psychology		
-PSY - Psychology	39200	Language & The Brain		
-PSY - Psychology	39200	Lifespan Development		
-PSY - Psychology	39200	Neurobiology of Disease		
-PSY - Psychology	39200	Neurodevelopmental Disorders		
-PSY - Psychology	39200	Parapsyc & Psychic Claims		
-PSY - Psychology	39200	Psychology of Trauma		
-PSY - Psychology	39200	Science of Happiness		
-PSY - Psychology	39200	Social Psychology & Film		
-PSY - Psychology	39200	Understanding Autism		
+PSY - Psychology	39200	Attention & Cognitive Control
+PSY - Psychology	39200	Beh/Neural Sys Learn & Mem
+PSY - Psychology	39200	Close Relationships
+PSY - Psychology	39200	Cognitive Neurosci of Vision
+PSY - Psychology	39200	Diversity and Inclusion
+PSY - Psychology	39200	Foods and Behavior
+PSY - Psychology	39200	Intro to Clinical Psychology
+PSY - Psychology	39200	Language & The Brain
+PSY - Psychology	39200	Lifespan Development
+PSY - Psychology	39200	Neurobiology of Disease
+PSY - Psychology	39200	Neurodevelopmental Disorders
+PSY - Psychology	39200	Parapsyc & Psychic Claims
+PSY - Psychology	39200	Psychology of Trauma
+PSY - Psychology	39200	Science of Happiness
+PSY - Psychology	39200	Social Psychology & Film
+PSY - Psychology	39200	Understanding Autism
 SOC - Sociology	10000	*Introductory Sociology	Behavioral/Social Science (BSS)	Summer 2021,Fall 2021,Spring 2022
 SOC - Sociology	22000	*Social Problems	Behavioral/Social Science (BSS)	Summer 2021,Fall 2021,Spring 2022
 SOC - Sociology	27500	Sociology of Aging		Fall 2021
 SOC - Sociology	31000	*Racial And Ethnic Diversity		Summer 2021,Fall 2021
-SOC - Sociology	31200	American Society		
+SOC - Sociology	31200	American Society
 SOC - Sociology	32400	Criminology		Summer 2021,Fall 2021,Spring 2022
-SOC - Sociology	32600	Social Conflict And Criminal Justice		
+SOC - Sociology	32600	Social Conflict And Criminal Justice
 SOC - Sociology	32700	*Crime, Deviance And Mass Media		Fall 2021
 SOC - Sociology	32800	*Criminal Justice		Summer 2021,Fall 2021,Spring 2022
 SOC - Sociology	33400	Urban Sociology		Summer 2021,Spring 2022
 SOC - Sociology	33500	Political Sociology		Fall 2021,Spring 2022
-SOC - Sociology	33800	Global Social Movements		
+SOC - Sociology	33800	Global Social Movements
 SOC - Sociology	33900	Introduction To The Sociology Of Developing Nations		Spring 2022
 SOC - Sociology	34000	General Social Psychology		Fall 2021,Spring 2022
-SOC - Sociology	34400	*Environmental Sociology		
+SOC - Sociology	34400	*Environmental Sociology
 SOC - Sociology	35000	*Sociology of Family		Fall 2021,Spring 2022
 SOC - Sociology	35200	*Drugs, Culture & Society		Fall 2021
 SOC - Sociology	35600	*Hate And Violence		Fall 2021,Spring 2022
 SOC - Sociology	36700	*Religion In America		Fall 2021,Spring 2022
-SOC - Sociology	36900	Chinese Religion		
+SOC - Sociology	36900	Chinese Religion
 SOC - Sociology	37400	Medical Sociology	Behavioral/Social Science (BSS)	Fall 2021,Spring 2022
 SOC - Sociology	39100	Sociology of Policing		Spring 2022
-SOC - Sociology	39100	Employment and Law		
-SOC - Sociology	39100	Sociology of Gaming		
-SOC - Sociology	39100	Sociology of Mental Health		
+SOC - Sociology	39100	Employment and Law
+SOC - Sociology	39100	Sociology of Gaming
+SOC - Sociology	39100	Sociology of Mental Health

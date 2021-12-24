@@ -101,11 +101,11 @@ public class Main
             }
             else if (decision == 3)
             {
-                System.out.println("Enter filename for .csv");
+                System.out.println("Enter filename for .txt");
                 String input = scan.nextLine();
-                if (!input.substring(input.length() - 4).equals(".csv"))
+                if (!input.substring(input.length() - 4).equals(".txt"))
                 {
-                    input += ".csv";
+                    input += ".txt";
                 }
                 System.out.println(input);
                 File f = new File(input);

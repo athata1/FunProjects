@@ -1,24 +1,13 @@
 import java.awt.*;
 import java.awt.font.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 import java.util.*;
-import java.util.Scanner;
 import java.awt.geom.Rectangle2D;
-import java.io.FileWriter;
-import java.io.FileReader;
-import java.io.File;
-import java.io.IOException;
 
 public class TicTacToe extends JPanel implements MouseListener, KeyListener
 {
@@ -34,6 +23,7 @@ public class TicTacToe extends JPanel implements MouseListener, KeyListener
     ArrayList<Button> buttons = new ArrayList<Button>();
     HashMap<String,Integer> dupp;
     int countMiniMax;
+    boolean threadRunning;
     public TicTacToe()
     {
         setUpBoard();
@@ -145,13 +135,25 @@ public class TicTacToe extends JPanel implements MouseListener, KeyListener
             if (!message.equals(""))
                 g.drawString("Press R to Reset",0, len*100 + 70);
 
-                //run Random as Next Move
-                if (!isDone && ((isPlayer1Turn && player1.equals("random")) || (!isPlayer1Turn && player2.equals("random"))))
-                    findRandomMove();
 
-                //run Ai as NextMove
-                if (!isDone && ((isPlayer1Turn && player1.equals("ai")) || (!isPlayer1Turn && player2.equals("ai"))))
-                    bestMove(board,isPlayer1Turn);
+            if (!threadRunning)
+            {
+                Thread th = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        threadRunning = true;
+                        //run Random as Next Move
+                        if (!isDone && ((isPlayer1Turn && player1.equals("random")) || (!isPlayer1Turn && player2.equals("random"))))
+                            findRandomMove();
+
+                        //run Ai as NextMove
+                        if (!isDone && ((isPlayer1Turn && player1.equals("ai")) || (!isPlayer1Turn && player2.equals("ai"))))
+                            bestMove(board,isPlayer1Turn);
+                        threadRunning = false;
+                    }
+                });
+                th.start();
+            }
         }
     }
 
@@ -175,7 +177,7 @@ public class TicTacToe extends JPanel implements MouseListener, KeyListener
         int[] output = new int[2];
         int max = Integer.MIN_VALUE;
         boolean foundBestMove = false;
-        char ch = (isPlayer1Turn) ? 'x': 'o';
+        char ch = (currentPlayer1) ? 'x': 'o';
         char[][] copy = copyOfBoard(board);
         for (int r = 0; r < len; r++)
         {
@@ -245,7 +247,6 @@ public class TicTacToe extends JPanel implements MouseListener, KeyListener
 
         int bestScore = (isMaximizing) ? Integer.MIN_VALUE: Integer.MAX_VALUE;
         boolean isRunning = true;
-        boolean foundBestWorst = false;
         for (int r = 0; r < len && isRunning; r++)
         {
             for (int c = 0; c < len && isRunning; c++)

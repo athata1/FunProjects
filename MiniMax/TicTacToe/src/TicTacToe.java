@@ -176,15 +176,16 @@ public class TicTacToe extends JPanel implements MouseListener, KeyListener
         int max = Integer.MIN_VALUE;
         boolean foundBestMove = false;
         char ch = (isPlayer1Turn) ? 'x': 'o';
+        char[][] copy = copyOfBoard(board);
         for (int r = 0; r < len; r++)
         {
             for (int c = 0; c < len; c++)
             {
-                if (board[r][c] == ' ')
+                if (copy[r][c] == ' ')
                 {
-                    board[r][c] = ch;
-                    int currVal = minimax(board,!currentPlayer1,false);
-                    board[r][c] = ' ';
+                    copy[r][c] = ch;
+                    int currVal = minimax(copy,!currentPlayer1,false);
+                    copy[r][c] = ' ';
                     if (currVal > max)
                     {
                         max = currVal;
@@ -383,16 +384,16 @@ public class TicTacToe extends JPanel implements MouseListener, KeyListener
 
         for (int i = 0; i < len; i++)
         {
-            if (board[i][0] != ' ' && hor(i,0))
+            if (board[i][0] != ' ' && hor(i,0,board))
                 output = "" + board[i][0];
-            if (board[0][i] != ' ' && ver(i,0))
+            if (board[0][i] != ' ' && ver(i,0,board))
                 output = "" + board[0][i];
         }
-        if (board[0][0] != ' ' && diagonal1(0))
+        if (board[0][0] != ' ' && diagonal1(0,board))
         {
             output = "" + board[0][0];
         }
-        if (board[0][len-1] != ' ' && diagonal2(0))
+        if (board[0][len-1] != ' ' && diagonal2(0,board))
         {
             output = "" + board[0][len-1];
         }
@@ -525,33 +526,33 @@ public class TicTacToe extends JPanel implements MouseListener, KeyListener
         isPlayer1Turn = !isPlayer1Turn;
         repaint();
     }
-    public boolean hor(int i, int n)
+    public boolean hor(int i, int n, char[][] board)
     {
         if (n == len-1)
             return true;
-        return hor(i,n+1) && board[i][n] == board[i][n+1];
+        return hor(i,n+1, board) && board[i][n] == board[i][n+1];
     }
-    public boolean ver(int i, int n)
+    public boolean ver(int i, int n, char[][] board)
     {
         if (n == len-1)
             return true;
-        return ver(i,n+1) && board[n][i] == board[n+1][i];
+        return ver(i,n+1, board) && board[n][i] == board[n+1][i];
     }
-    public boolean diagonal1(int n)
+    public boolean diagonal1(int n, char[][] board)
     {
         if (n == len - 1)
         {
             return true;
         }
-        return diagonal1(n+1) && board[n][n] == board[n+1][n+1];
+        return diagonal1(n+1, board) && board[n][n] == board[n+1][n+1];
     }
-    public boolean diagonal2(int n)
+    public boolean diagonal2(int n, char[][] board)
     {
         if (n == len - 1)
         {
             return true;
         }
-        return diagonal2(n+1) && board[n][len-1-n] == board[n+1][len-2-n];
+        return diagonal2(n+1, board) && board[n][len-1-n] == board[n+1][len-2-n];
     }
     public static void main(String[] args)
     {

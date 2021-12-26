@@ -14,7 +14,6 @@ public class PenroseTiling implements LSystems
     public void drawLSystem(Turtle turtle, int length, Graphics g)
     {
         System.out.println(str);
-
         for (int i = 0; i < str.length(); i++)
         {
             if (str.charAt(i) == '1')

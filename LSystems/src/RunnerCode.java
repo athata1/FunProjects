@@ -9,11 +9,11 @@ public class RunnerCode extends JPanel implements MouseListener
 
     Turtle turtle;
     int count = 0;
-    SierpinskiTriangle lSystem;
+    LSystems lSystem;
     final int LINELENGTH;
     public RunnerCode()
     {
-        lSystem = new SierpinskiTriangle();
+        lSystem = new HilbertCurve();
         LINELENGTH = lSystem.getLength();
         addMouseListener(this);
     }
@@ -29,18 +29,24 @@ public class RunnerCode extends JPanel implements MouseListener
 
     public void mouseClicked(MouseEvent e)
     {
-        if (e.getModifiers() == MouseEvent.BUTTON3_MASK && count > 0)
-        {
-            count--;
-            lSystem.subtract();
-            repaint();
-        }
-        if (e.getModifiers() == MouseEvent.BUTTON1_MASK)
-        {
-            count++;
-            lSystem.add();
-            repaint();
-        }
+        Thread th = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (e.getModifiers() == MouseEvent.BUTTON3_MASK && count > 0)
+                {
+                    count--;
+                    lSystem.subtract();
+                    repaint();
+                }
+                if (e.getModifiers() == MouseEvent.BUTTON1_MASK)
+                {
+                    count++;
+                    lSystem.add();
+                    repaint();
+                }
+            }
+        });
+        th.start();
     }
     public void mouseEntered(MouseEvent e){}
     public void mouseExited(MouseEvent e){}

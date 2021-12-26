@@ -51,7 +51,7 @@ public class TicTacToe extends JPanel implements MouseListener, KeyListener
     {
         isDone = false;
         isPlayer1Turn = true;
-        board = new char[3][3];
+        board = new char[4][4];
         len = board.length;
         for (int r = 0; r < len; r++)
         {

@@ -2,9 +2,18 @@ public class SystemOfEquation
 {
     public static void main(String[] args)
     {
-        double[][] equations = {{1,1,1,6},
-                {0,2,5,-4},
-                {2,5,-1,27}};
+        int[][] equations = {
+                { 0, 0, 8, 0, 0,0,0,0,0,0,0,-1},
+                { 0, 8, 8, 0, 0,0,0,0,0,0,0,12},
+                { 8, 8,20, 0, 0,0,0,0,0,0,0,-3},
+                { 8,20,12, 0, 8,0,4,0,2,0,1,0},
+                {20,12,18, 8, 0,4,4,2,2,1,1,0},
+                {12,18, 6, 0,12,4,8,2,3,1,1,1},
+                {18, 6, 7,12, 0,8,4,3,1,1,0,0},
+                { 6, 7, 1, 0, 6,4,5,1,1,0,0,0},
+                { 7, 1, 1, 6, 0,5,1,1,0,0,0,0},
+                { 1, 1, 0, 0, 1,1,1,0,0,0,0,0},
+                { 1, 0, 0, 1, 0,1,0,0,0,0,0,0}};
 
         double[][] firstMatrix = new double[equations.length][equations[0].length-1];
         double[][] secondMatrix = new double[equations.length][1];

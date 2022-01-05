@@ -28,35 +28,40 @@ public class RowReducedEchelonFormFraction {
             }
         }
 
-        Fraction[][] output = convertToReducedEchelonForm(fractionMatrix);
+        Fraction[][] output = convertToRowReducedEchelonForm(fractionMatrix);
         printMatrix(output);
     }
-    /*public static double[][] convertToRowReducedEchelonForm(double[][] matrix)
+    public static Fraction[][] convertToRowReducedEchelonForm(Fraction[][] matrix)
     {
         if (matrix.length > matrix[0].length)
             throw new MatrixException("Error: Invalid matrix dimensions");
 
-        double[][] output = new double[matrix.length][matrix[0].length];
-        for (int i = 0; i < output.length; i++)
+        Fraction[][] output = new Fraction[matrix.length][matrix[0].length];
+        for (int r = 0; r < output.length; r++)
         {
-            System.arraycopy(matrix[i], 0, output[i], 0, output[i].length);
+            for (int c = 0; c < output[r].length; c++)
+            {
+                output[r][c] = new Fraction(matrix[r][c]);
+            }
         }
 
         output = convertToReducedEchelonForm(output);
 
         for (int c = output.length - 1; c >= 0; c--)
         {
-            double currentValue = output[c][c];
+            Fraction currentValue = output[c][c];
             for (int r = c - 1; r >= 0; r--)
             {
-                double coefficient = -1.0 *output[r][c] / currentValue;
-                double[] alteredEquation = multiplyByCoeff(coefficient, output[c]);
+                Fraction coefficient = new Fraction(-1);
+                coefficient.multiply(output[r][c]);
+                coefficient.divide(currentValue);
+                Fraction[] alteredEquation = multiplyByCoeff(coefficient, output[c]);
                 output[r] = addEquations(alteredEquation, output[r]);
             }
         }
 
         return output;
-    }*/
+    }
 
 
     public static Fraction[][] convertToReducedEchelonForm(Fraction[][] matrix)
@@ -111,7 +116,6 @@ public class RowReducedEchelonFormFraction {
                 coefficient.multiply(output[i][r]);
                 coefficient.divide(currentValue);
                 Fraction[] alteredEquation = multiplyByCoeff(coefficient, output[r]);
-                //printArray(alteredEquation);
                 output[i] = addEquations(alteredEquation,output[i]);
             }
         }

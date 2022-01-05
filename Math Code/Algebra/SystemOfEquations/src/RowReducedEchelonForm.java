@@ -1,12 +1,12 @@
 public class RowReducedEchelonForm {
     public static void main(String[] args) {
-        double[][] matrix = {
+        /*double[][] matrix = {
                 {2,-1,0,-1},
                 {1,1,-1,2},
                 {1,-2,2,-1},
-        };
+        };*/
 
-        /*double[][] matrix = {
+        double[][] matrix = {
                 { 8, 8,20, 0, 0,0,0,0,0,0,0,-3},
                 { 0, 8, 8, 0, 0,0,0,0,0,0,0,12},
                 { 0, 0, 8, 0, 0,0,0,0,0,0,0,-1},
@@ -18,10 +18,10 @@ public class RowReducedEchelonForm {
                 {12,18, 6, 0,12,4,8,2,3,1,1,1},
                 {20,12,18, 8, 0,4,4,2,2,1,1,0},
                 { 8,20,12, 0, 8,0,4,0,2,0,1,0},
-        };*/
+        };
 
 
-        double[][] output = convertToEchelonForm(matrix);
+        double[][] output = convertToRowReducedEchelonForm(matrix);
         printMatrix(output);
     }
     public static double[][] convertToRowReducedEchelonForm(double[][] matrix)

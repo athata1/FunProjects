@@ -1,12 +1,11 @@
-public class RowReducedEchelonForm {
+public class RowReducedEchelonFormFraction {
     public static void main(String[] args) {
-        double[][] matrix = {
+        int[][] matrix = {
                 {2,-1,0,-1},
                 {1,1,-1,2},
                 {1,-2,2,-1},
         };
-
-        /*double[][] matrix = {
+        /*int[][] matrix = {
                 { 8, 8,20, 0, 0,0,0,0,0,0,0,-3},
                 { 0, 8, 8, 0, 0,0,0,0,0,0,0,12},
                 { 0, 0, 8, 0, 0,0,0,0,0,0,0,-1},
@@ -20,11 +19,19 @@ public class RowReducedEchelonForm {
                 { 8,20,12, 0, 8,0,4,0,2,0,1,0},
         };*/
 
+        Fraction[][] fractionMatrix = new Fraction[matrix.length][matrix[0].length];
+        for (int r = 0; r < fractionMatrix.length;r++)
+        {
+            for (int c = 0; c < fractionMatrix[r].length; c++)
+            {
+                fractionMatrix[r][c] = new Fraction(matrix[r][c]);
+            }
+        }
 
-        double[][] output = convertToEchelonForm(matrix);
+        Fraction[][] output = convertToEchelonForm(fractionMatrix);
         printMatrix(output);
     }
-    public static double[][] convertToRowReducedEchelonForm(double[][] matrix)
+    /*public static double[][] convertToRowReducedEchelonForm(double[][] matrix)
     {
         if (matrix.length > matrix[0].length)
             throw new MatrixException("Error: Invalid matrix dimensions");
@@ -69,26 +76,32 @@ public class RowReducedEchelonForm {
             }
         }
         return output;
-    }
+    }*/
 
-    public static double[][] convertToEchelonForm(double[][] matrix)
+    public static Fraction[][] convertToEchelonForm(Fraction[][] matrix)
     {
         if (matrix.length > matrix[0].length)
             throw new MatrixException("Error: Invalid matrix dimensions");
 
-        double[][] output = new double[matrix.length][matrix[0].length];
-        for (int i = 0; i < output.length; i++)
+        Fraction[][] output = new Fraction[matrix.length][matrix[0].length];
+        for (int r = 0; r < output.length; r++)
         {
-            System.arraycopy(matrix[i], 0, output[i], 0, output[i].length);
+            for (int c = 0; c < output[r].length; c++)
+            {
+                output[r][c] = new Fraction(matrix[r][c]);
+            }
         }
 
         for (int r = 0; r < output.length; r++)
         {
-            double currentValue = output[r][r];
+            Fraction currentValue = output[r][r];
             for (int i = r + 1; i < output.length; i++)
             {
-                double coefficient = -1.0 * output[i][r] / currentValue;
-                double[] alteredEquation = multiplyByCoeff(coefficient, output[r]);
+                Fraction coefficient = new Fraction(1);
+                coefficient.multiply(-1);
+                coefficient.multiply(output[i][r]);
+                coefficient.divide(currentValue);
+                Fraction[] alteredEquation = multiplyByCoeff(coefficient, output[r]);
                 //printArray(alteredEquation);
                 output[i] = addEquations(alteredEquation,output[i]);
             }
@@ -96,18 +109,18 @@ public class RowReducedEchelonForm {
         return output;
     }
 
-    private static void printMatrix(double[][] output)
+    private static <T> void printMatrix(T[][] output)
     {
         for (int r = 0; r < output.length; r++)
         {
             for (int c = 0; c < output[r].length; c++)
             {
-                System.out.printf("%.2f ",output[r][c]);
+                System.out.printf("%3s ",output[r][c]);
             }
             System.out.println();
         }
     }
-    public static void printArray(double[] array)
+    public static <T>void printArray(T[] array)
     {
         for (int i = 0; i < array.length; i++)
         {
@@ -116,22 +129,28 @@ public class RowReducedEchelonForm {
         System.out.println();
     }
 
-    public static double[] addEquations(double[] equation1, double[] equation2)
+    public static Fraction[] addEquations(Fraction[] equation1, Fraction[] equation2)
     {
-        double[] output = new double[equation1.length];
+        Fraction[] output = new Fraction[equation1.length];
         for (int i = 0; i < output.length; i++)
         {
-            output[i] = equation1[i] + equation2[i];
+            Fraction temp = new Fraction(0);
+            temp.add(equation1[i]);
+            temp.add(equation2[i]);
+            output[i] = temp;
         }
         return output;
     }
 
-    public static double[] multiplyByCoeff(double coefficient, double[] equation)
+    public static Fraction[] multiplyByCoeff(Fraction coefficient, Fraction[] equation)
     {
-        double[] output = new double[equation.length];
+        Fraction[] output = new Fraction[equation.length];
         for (int i = 0; i < equation.length; i++)
         {
-            output[i] = coefficient * equation[i];
+            Fraction temp = new Fraction();
+            temp.multiply(coefficient);
+            temp.multiply(equation[i]);
+            output[i] = temp;
         }
         return output;
     }

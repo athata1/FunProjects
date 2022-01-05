@@ -39,6 +39,11 @@ public class Fraction implements Comparable
         simplify();
     }
 
+    public Fraction(Fraction f)
+    {
+        this(f.numerator,f.denominator);
+    }
+
     // Return the fraction as a String e.g. "2/3"
     public String toString()
     {
@@ -141,7 +146,7 @@ public class Fraction implements Comparable
         Fraction temp = (Fraction)other;
 
         numerator *= temp.numerator;
-        numerator *= temp.denominator;
+        denominator *= temp.denominator;
         simplify();
     }
     public void divide(int n)

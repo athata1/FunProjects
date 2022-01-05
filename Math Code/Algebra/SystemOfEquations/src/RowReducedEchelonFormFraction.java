@@ -1,11 +1,11 @@
 public class RowReducedEchelonFormFraction {
     public static void main(String[] args) {
-        int[][] matrix = {
+        /*int[][] matrix = {
                 {2,-1,0,-1},
                 {1,1,-1,2},
                 {1,-2,2,-1},
-        };
-        /*int[][] matrix = {
+        };*/
+        int[][] matrix = {
                 { 8, 8,20, 0, 0,0,0,0,0,0,0,-3},
                 { 0, 8, 8, 0, 0,0,0,0,0,0,0,12},
                 { 0, 0, 8, 0, 0,0,0,0,0,0,0,-1},
@@ -17,7 +17,7 @@ public class RowReducedEchelonFormFraction {
                 {12,18, 6, 0,12,4,8,2,3,1,1,1},
                 {20,12,18, 8, 0,4,4,2,2,1,1,0},
                 { 8,20,12, 0, 8,0,4,0,2,0,1,0},
-        };*/
+        };
 
         Fraction[][] fractionMatrix = new Fraction[matrix.length][matrix[0].length];
         for (int r = 0; r < fractionMatrix.length;r++)
@@ -28,7 +28,7 @@ public class RowReducedEchelonFormFraction {
             }
         }
 
-        Fraction[][] output = convertToEchelonForm(fractionMatrix);
+        Fraction[][] output = convertToReducedEchelonForm(fractionMatrix);
         printMatrix(output);
     }
     /*public static double[][] convertToRowReducedEchelonForm(double[][] matrix)
@@ -56,27 +56,36 @@ public class RowReducedEchelonFormFraction {
         }
 
         return output;
-    }
-    public static double[][] convertToReducedEchelonForm(double[][] matrix)
+    }*/
+
+
+    public static Fraction[][] convertToReducedEchelonForm(Fraction[][] matrix)
     {
         if (matrix.length > matrix[0].length)
             throw new MatrixException("Error: Invalid matrix dimensions");
 
-        double[][] output = new double[matrix.length][matrix[0].length];
-        for (int i = 0; i < output.length; i++)
+        Fraction[][] output = new Fraction[matrix.length][matrix[0].length];
+        for (int r = 0; r < output.length; r++)
         {
-            System.arraycopy(matrix[i], 0, output[i], 0, output[i].length);
+            for (int c = 0; c < output[r].length; c++)
+            {
+                output[r][c] = new Fraction(matrix[r][c]);
+            }
         }
+
+
         output = convertToEchelonForm(output);
         for (int c = 0; c < output.length; c++)
         {
-            if (output[c][c] != 0)
+            if (output[c][c].compareTo(new Fraction(0)) != 0)
             {
-                output[c] = multiplyByCoeff(1.0 / output[c][c], output[c]);
+                Fraction coefficient = new Fraction(1);
+                coefficient.divide(output[c][c]);
+                output[c] = multiplyByCoeff(coefficient, output[c]);
             }
         }
         return output;
-    }*/
+    }
 
     public static Fraction[][] convertToEchelonForm(Fraction[][] matrix)
     {
@@ -115,7 +124,7 @@ public class RowReducedEchelonFormFraction {
         {
             for (int c = 0; c < output[r].length; c++)
             {
-                System.out.printf("%3s ",output[r][c]);
+                System.out.printf("%5s ",output[r][c]);
             }
             System.out.println();
         }

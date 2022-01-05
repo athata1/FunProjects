@@ -49,7 +49,7 @@ public class RowReducedEchelonFormFraction {
             double currentValue = output[c][c];
             for (int r = c - 1; r >= 0; r--)
             {
-                double coefficient = -1.0 * output[r][c] / currentValue;
+                double coefficient = -1.0 *output[r][c] / currentValue;
                 double[] alteredEquation = multiplyByCoeff(coefficient, output[c]);
                 output[r] = addEquations(alteredEquation, output[r]);
             }

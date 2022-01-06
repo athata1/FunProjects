@@ -1,11 +1,11 @@
 public class RowReducedEchelonFormFraction {
     public static void main(String[] args) {
         /*int[][] matrix = {
-                {2,-1,0,-1},
+                {0,-1,0,-1},
                 {1,1,-1,2},
                 {1,-2,2,-1},
         };*/
-        int[][] matrix = {
+        /*int[][] matrix = {
                 { 8, 8,20, 0, 0,0,0,0,0,0,0,-3},
                 { 0, 8, 8, 0, 0,0,0,0,0,0,0,12},
                 { 0, 0, 8, 0, 0,0,0,0,0,0,0,-1},
@@ -17,7 +17,20 @@ public class RowReducedEchelonFormFraction {
                 {20,12,18, 8, 0,4,4,2,2,1,1,0},
                 {12,18, 6, 0,12,4,8,2,3,1,1,1},
                 { 8,20,12, 0, 8,0,4,0,2,0,1,0},
-        };
+        };*/
+
+        int[][] matrix = {
+                { 0, 0, 8, 0, 0,0,0,0,0,0,0,-1},
+                { 0, 8, 8, 0, 0,0,0,0,0,0,0,12},
+                { 8, 8,20, 0, 0,0,0,0,0,0,0,-3},
+                { 8,20,12, 0, 8,0,4,0,2,0,1,0},
+                {20,12,18, 8, 0,4,4,2,2,1,1,0},
+                {12,18, 6, 0,12,4,8,2,3,1,1,1},
+                {18, 6, 7,12, 0,8,4,3,1,1,0,0},
+                { 6, 7, 1, 0, 6,4,5,1,1,0,0,0},
+                { 7, 1, 1, 6, 0,5,1,1,0,0,0,0},
+                { 1, 1, 0, 0, 1,1,1,0,0,0,0,0},
+                { 1, 0, 0, 1, 0,1,0,0,0,0,0,0}};
 
         Fraction[][] fractionMatrix = new Fraction[matrix.length][matrix[0].length];
         for (int r = 0; r < fractionMatrix.length;r++)
@@ -37,6 +50,8 @@ public class RowReducedEchelonFormFraction {
         if (matrix.length > matrix[0].length)
             throw new MatrixException("Error: Invalid matrix dimensions");
 
+        System.out.println("Converting to Reduced Row Echelon Form");
+
         Fraction[][] output = new Fraction[matrix.length][matrix[0].length];
         for (int r = 0; r < output.length; r++)
         {
@@ -46,6 +61,7 @@ public class RowReducedEchelonFormFraction {
             }
         }
 
+        System.out.println("Converting to Reduced Echelon Form");
         output = convertToReducedEchelonForm(output);
 
         for (int c = output.length - 1; c >= 0; c--)
@@ -53,14 +69,17 @@ public class RowReducedEchelonFormFraction {
             Fraction currentValue = output[c][c];
             for (int r = c - 1; r >= 0; r--)
             {
-                Fraction coefficient = new Fraction(-1);
-                coefficient.multiply(output[r][c]);
-                coefficient.divide(currentValue);
-                Fraction[] alteredEquation = multiplyByCoeff(coefficient, output[c]);
-                output[r] = addEquations(alteredEquation, output[r]);
+                if (currentValue.compareTo(new Fraction(0)) != 0)
+                {
+                    Fraction coefficient = new Fraction(-1);
+                    coefficient.multiply(output[r][c]);
+                    coefficient.divide(currentValue);
+                    Fraction[] alteredEquation = multiplyByCoeff(coefficient, output[c]);
+                    output[r] = addEquations(alteredEquation, output[r]);
+                }
             }
         }
-
+        System.out.println("Completed Reduced Row Echelon Form");
         return output;
     }
 
@@ -79,8 +98,9 @@ public class RowReducedEchelonFormFraction {
             }
         }
 
-
+        System.out.println("Converting to Echelon Form");
         output = convertToEchelonForm(output);
+
         for (int c = 0; c < output.length; c++)
         {
             if (output[c][c].compareTo(new Fraction(0)) != 0)
@@ -90,11 +110,13 @@ public class RowReducedEchelonFormFraction {
                 output[c] = multiplyByCoeff(coefficient, output[c]);
             }
         }
+        System.out.println("Completed Reduced Echelon Form");
         return output;
     }
 
     public static Fraction[][] convertToEchelonForm(Fraction[][] matrix)
     {
+
         if (matrix.length > matrix[0].length)
             throw new MatrixException("Error: Invalid matrix dimensions");
 
@@ -120,6 +142,7 @@ public class RowReducedEchelonFormFraction {
                 output[i] = addEquations(alteredEquation,output[i]);
             }
         }
+        System.out.println("Completed Echelon Form");
         return output;
     }
 

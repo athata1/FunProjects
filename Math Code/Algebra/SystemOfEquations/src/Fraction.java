@@ -198,16 +198,23 @@ public class Fraction implements Comparable
 
     public static int gcd(long a, long b)
     {
-        int factor = 1;
+        /*long factor = 1;
 
         //Find common factor
         long val = Math.abs(a);
-        for (int i = 2; i <= Math.min(val,b); i++)
+        for (long i = 2; i <= Math.min(val,b); i++)
         {
             if (a % i == 0 && b % i == 0)
                 factor = i;
+        }*/
+        
+        while (b != 0) {
+            long t = a;
+            a = b;
+            b = t % b;
         }
-        return factor;
+
+        return (int)a;
     }
 
     public void simplify()

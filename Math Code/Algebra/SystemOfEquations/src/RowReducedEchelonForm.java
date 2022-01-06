@@ -15,13 +15,14 @@ public class RowReducedEchelonForm {
                 { 1, 1, 0, 0, 1,1,1,0,0,0,0,0},
                 {18, 6, 7,12, 0,8,4,3,1,1,0,0},
                 { 7, 1, 1, 6, 0,5,1,1,0,0,0,0},
-                {12,18, 6, 0,12,4,8,2,3,1,1,1},
                 {20,12,18, 8, 0,4,4,2,2,1,1,0},
+                {12,18, 6, 0,12,4,8,2,3,1,1,1},
                 { 8,20,12, 0, 8,0,4,0,2,0,1,0},
         };
 
 
         double[][] output = convertToRowReducedEchelonForm(matrix);
+        output = convertToRowReducedEchelonForm(output);
         printMatrix(output);
     }
     public static double[][] convertToRowReducedEchelonForm(double[][] matrix)
@@ -87,10 +88,12 @@ public class RowReducedEchelonForm {
             double currentValue = output[r][r];
             for (int i = r + 1; i < output.length; i++)
             {
-                double coefficient = -1.0 * output[i][r] / currentValue;
-                double[] alteredEquation = multiplyByCoeff(coefficient, output[r]);
-                //printArray(alteredEquation);
-                output[i] = addEquations(alteredEquation,output[i]);
+                if (currentValue != 0)
+                {
+                    double coefficient = -1.0 * output[i][r] / currentValue;
+                    double[] alteredEquation = multiplyByCoeff(coefficient, output[r]);
+                    output[i] = addEquations(alteredEquation, output[i]);
+                }
             }
         }
         return output;

@@ -236,9 +236,8 @@ public class RowReducedEchelonFormFraction
     }
     public static <T>void printArray(T[] array)
     {
-        for (int i = 0; i < array.length; i++)
-        {
-            System.out.print(array[i] + " ");
+        for (T t : array) {
+            System.out.print(t + " ");
         }
         System.out.println();
     }

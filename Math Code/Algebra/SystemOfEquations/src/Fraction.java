@@ -54,6 +54,11 @@ public class Fraction implements Comparable
         }
         return numerator + "/" + denominator;
     }
+
+    public double toDouble()
+    {
+        return 1.0 * numerator / denominator;
+    }
     public boolean isZero()
     {
         if (numerator == 0)
@@ -207,7 +212,7 @@ public class Fraction implements Comparable
             if (a % i == 0 && b % i == 0)
                 factor = i;
         }*/
-        
+
         while (b != 0) {
             long t = a;
             a = b;

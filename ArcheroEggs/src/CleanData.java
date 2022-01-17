@@ -2,8 +2,10 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class CleanData {
-    public static void main(String[] args) throws Exception{
+public class CleanData
+{
+    public static void main(String[] args) throws Exception
+    {
         Scanner scan = new Scanner(new File("egg-data.txt"));
         PrintWriter writer = new PrintWriter(new File("egg-data-cleaned.txt"));
         while (scan.hasNextLine())

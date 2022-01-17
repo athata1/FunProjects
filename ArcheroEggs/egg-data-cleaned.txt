@@ -30,3 +30,11 @@ Tornado Mage	700	7
 Wasp	550	5 
 Wolfhound	650	10 
 Zombie	1800	5 
+Crimson Witch	80	240 
+Ice Demon	80	120 
+Ice Worm	250	90 
+Little Dragon	80	120 
+Medusa	100	150 
+Queen Bee	200	90 
+Rage Golem	60	180 
+Skeleton King	80	240 

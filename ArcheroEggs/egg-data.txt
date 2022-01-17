@@ -83,3 +83,21 @@ Up-close Dangers (R), Ancient Maze
 
 Zombie	1800	5 min	Chapter 1, 2, 3, 6, 7, 8, 15 (R), 16, 18
 Ancient Maze
+
+Arch Leader	80		Chapter 5, 11 (R)
+Evil Dungeon, Ancient Maze (R)
+
+Crimson Witch	80	240 min	Chapter 4 (R), 18 (R), 20, 21
+Evil Dungeon, Ancient Maze (R)
+
+Ice Demon	80	120 min	Chapter 9, Chapter 23
+Ice Worm	250	90 min	Chapter 14 (R), 18, 21
+Little Dragon	80	120 min	Chapter 1, 7, 8 (R), 13, 14, 18, 21
+Ancient Maze, Evil Dungeon
+
+Medusa	100	150 min	Chapter 11, 14 (R), 21
+Queen Bee	200	90 min	Chapter 9, 10 (R), 14, 18
+Rage Golem	60	180 min	Chapter 4 (R), 14 (R)
+Flying Bullets, Evil Dungeon
+
+Skeleton King	80	240 min	Chapter 11, 19 (R), 21, 26, 28, 29,

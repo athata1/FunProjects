@@ -1,0 +1,32 @@
+Bomb Ghost	300	15 
+Cactus	900	10 
+Crazy Spider	1800	10 
+Elite Archer	1600	15 
+Fallen Bat	1000	5 
+Fire Element	2800	5 
+Fire Lizard	1000	10 
+Fire Mage	1000	10 
+Flame Ghost	2200	5 
+Green Bat	250	10 
+Ice Golem	1200	10 
+Icefire Phantom	1800	15 
+Lava Golem	800	5 
+Long Dragon	1600	10 
+Party Tree	550	10 
+Pea Shooter	1350	10 
+Piranha	400	20 
+Psionic Scarecrow	1250	10 
+Rock Puppet	250	5 
+Savage Spider	1500	10 
+Scarecrow	700	15 
+Scythe/Sickle Mage	1400	5 
+Shadow Assassin	950	7 
+Skeleton Archer	450	15 
+Skeleton Soldier	1800	10 
+Skeleton Swordsman	1500	5 
+Slime	80	5 
+Thorny Snake	1660	5 
+Tornado Mage	700	7 
+Wasp	550	5 
+Wolfhound	650	10 
+Zombie	1800	5 

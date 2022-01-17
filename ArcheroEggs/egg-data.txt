@@ -1,0 +1,85 @@
+Bomb Ghost	300	15 min	Chapter 1, 3 (R), 7, 8, 11, 12
+Flying Bullets
+
+Cactus	900	10 min	Chapter 2 (RH), 3, 7, 16, 18
+Flying Bullets, Ancient Maze
+
+Crazy Spider	1800	10 min	Chapter 2 (RH), 3, 7, 16
+Up-close Dangers (R), Ancient Maze
+
+Elite Archer	1600	15 min	Chapter 1, 3, 7, 8, 11 (R), 15, 16, 18, 19, 22, 24 (R), 26, 29, 31 (R)
+Fallen Bat	1000	5 min	Chapter 3, 6, 7, 8, 16 (R), 18, 22, 23, 25, 28
+Fire Element	2800	5 min	Chapter 13 (R), 17, 19
+Fire Lizard	1000	10 min	Chapter 2 (R), 3 (R), 7, 13, 15, 16, 17, 21
+Fire Mage	1000	10 min	Chapter 4 (R), 6, 13, 15, 16 (R), 17, 18 (R), 19, 21
+Flying Bullets, Ancient Maze
+
+Flame Ghost	2200	5 min	Chapter 4 (R), 6, 7, 13, 14, 16, 17, 18, 21
+Ancient Maze
+
+Flaming Bug	1600	20 min	Chapter 13 (R), 16, 17, 22, 30
+Green Bat	250	10 min	Chapter 1 (H), 3, 7, 12 (R), 16
+Up-close Dangers, Ancient Maze
+
+Ice Golem	1200	10 min	Chapter 9 (R), 14, 20, 21, 23, 31
+Flying Bullets
+
+Ice Mage	950		Chapter 9 (R), 10 (R), 14, 21
+Flying Bullets
+
+Icefire Phantom	1800	15 min	Chapter 9 (R), 10, 14, 21, 31
+Lava Golem	800	5 min	Chapter 5 (R), 6, 10 (RH), 11, 13, 16, 17, 18, 20, 21
+Up-close Dangers (R), Ancient Maze
+
+Long Dragon	1600	10 min	Chapter 2 (R), 3, 4, 6, 7, 13, 18, 21
+Ancient Maze
+
+Medusa	1200		Chapter 11 (R), 19
+Flying Bullets
+
+Nether Puppet			Chapter 1, 7, 8, 15, 16, 20 (R), 22, 24, 27
+One-eyed Bat			Chapter 5, 6 (R), 7, 10 (R), 11, 15, 16, 18, 19, 22, 23, 24 (R), 25 (R), 27, 30, 31 (R)
+Party Tree	550	10 min	Chapter 1, 3, 4 (R), 7
+Ancient Maze
+
+Pea Shooter	1350	10 min	Chapter 4, 8, 10, 15, 16 (R), 22
+Piranha	400	20 min	Chapter 1, 3, 7, 8, 12 (R), 14, 15, 17
+Flying Bullets, Ancient Maze
+
+Psionic Scarecrow	1250	10 min	Chapter 8 (R), 14, 16, 18 (R), 19, 24 (R)
+Rock Puppet	250	5 min	Chapter 1, 3, 5 (H, RH), 6 (H), 7, 8, 10 (H), 11, 13 (H), 15, 16, 17 (RH), 18 (H), 20
+Ancient Maze, Flying Bullets, Evil Dungeon
+
+Savage Spider	1500	10 min	Chapter 6 (R), 7, 13, 15, 16, 17, 18, 20, 22, 25, 27, 28, 29, 30
+Scarecrow	700	15 min	Chapter 6 (R), 7, 8, 14, 18, 21
+Flying Bullets
+
+Scarlet Mage			Chapter 11 (R), 14, 16 (R), 17, 18, 19, 23, 24 (R), 25 (R), 28, 29
+Scythe/Sickle Mage	1400	5 min	Chapter 5 (R), 6, 10, 14, 16, 19
+Shadow Assassin	950	7 min	Chapter 11 (R), 16, 19
+Skeleton Archer	450	15 min	Chapter 1, 3 (R), 7, 8, 14, 15, 18, 19, 22
+Flying Bullets
+
+Skeleton Soldier	1800	10 min	Chapter 5 (R), 6, 7, 10 (R), 11, 14, 15, 16 (R), 18, 19
+Up-close Dangers (Recommended), Ancient Maze
+
+Skeleton Swordsman	1500	5 min	Chapter 5 (R), 6, 7, 10, 11, 15, 16, 18, 19, 21
+Skull Wizard	850		Chapter 11, 16, 24 (R), 25, 26, 27, 28, 29, 31
+Flying Bullets, Ancient Maze
+
+Slime	80	5 min	Chapter 1, 3, 7, 8 (RH), 11 (H), 14, 16, 18
+Ancient Maze
+
+Thorny Snake	1660	5 min	Chapter 2 (RH), 7, 16
+Up-close Dangers, Ancient Maze
+
+Tornado Demon	450		Chapter 15 (R), 30
+Tornado Mage	700	7 min	Chapter 2 (R), 3, 7, 15, 16, 18, 19
+Wasp	550	5 min	Chapter 8 (R), 10, 13 (R), 14, 16, 17, 18
+Up-close Dangers
+
+Wolfhound	650	10 min	Chapter 4 (R), 5, 6, 7, 8, 15, 16, 18
+Up-close Dangers (R), Ancient Maze
+
+Zombie	1800	5 min	Chapter 1, 2, 3, 6, 7, 8, 15 (R), 16, 18
+Ancient Maze

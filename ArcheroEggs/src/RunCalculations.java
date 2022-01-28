@@ -3,9 +3,10 @@ import java.io.PrintWriter;
 import java.util.*;
 
 public class RunCalculations {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception
+    {
         Scanner scan = new Scanner(new File("egg-data-cleaned.txt"));
-        double percentDecrease = .21;
+        double percentDecrease = 0;
         ArrayList<Monster> output = new ArrayList<Monster>();
         while (scan.hasNextLine())
         {

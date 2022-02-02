@@ -21,6 +21,7 @@ public class OptimalGems {
         gems.add(new Gem(2,"attack"));
         gems.add(new Gem(2,"attack"));
         gems.add(new Gem(2,"attack"));
+        gems.add(new Gem(2,"attack"));
         gems.add(new Gem(3,"attack"));
         gems.add(new Gem(3,"attack"));
         gems.add(new Gem(3,"attack"));
@@ -30,6 +31,7 @@ public class OptimalGems {
         gems.add(new Gem(3,"hp"));
 
         gems.add(new Gem(3,"defense"));
+        gems.add(new Gem(1,"defense"));
         gems.add(new Gem(1,"defense"));
         gems.add(new Gem(1,"defense"));
         gems.add(new Gem(4,"defense"));
@@ -123,7 +125,7 @@ public class OptimalGems {
                 heuristic = 8;
             else if (totalItemValue >= 4)
                 heuristic = 4;
-            value += (int)Math.pow(heuristic,2);
+            value += (int)Math.pow(1.0*heuristic/4,2);
         }
         return (int)value + (int)value2;
     }

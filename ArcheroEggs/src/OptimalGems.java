@@ -20,6 +20,8 @@ public class OptimalGems {
 
             ArrayList<Gem> gems = new ArrayList<Gem>();
             gems.add(new Gem(1,"attack"));
+            gems.add(new Gem(1,"attack"));
+            gems.add(new Gem(1,"attack"));
             gems.add(new Gem(2,"attack"));
             gems.add(new Gem(2,"attack"));
             gems.add(new Gem(2,"attack"));
@@ -33,6 +35,8 @@ public class OptimalGems {
             gems.add(new Gem(3,"attack"));
 
             gems.add(new Gem(1,"hp"));
+            gems.add(new Gem(1,"hp"));
+            gems.add(new Gem(2,"hp"));
             gems.add(new Gem(2,"hp"));
             gems.add(new Gem(2,"hp"));
             gems.add(new Gem(3,"hp"));
@@ -40,13 +44,12 @@ public class OptimalGems {
             gems.add(new Gem(3,"hp"));
             gems.add(new Gem(3,"hp"));
 
+            gems.add(new Gem(1,"defense"));
+            gems.add(new Gem(1,"defense"));
+            gems.add(new Gem(2,"defense"));
+            gems.add(new Gem(2,"defense"));
             gems.add(new Gem(3,"defense"));
-            gems.add(new Gem(1,"defense"));
-            gems.add(new Gem(1,"defense"));
-            gems.add(new Gem(2,"defense"));
-            gems.add(new Gem(2,"defense"));
-            gems.add(new Gem(2,"defense"));
-            gems.add(new Gem(2,"defense"));
+            gems.add(new Gem(3,"defense"));
             gems.add(new Gem(4,"defense"));
             gems.add(new Gem(4,"defense"));
 

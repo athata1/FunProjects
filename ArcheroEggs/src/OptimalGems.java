@@ -4,57 +4,77 @@ import java.util.Comparator;
 
 public class OptimalGems {
     public static void main(String[] args) {
-        ArrayList<Item> items = new ArrayList<Item>();
-        items.add(new Item(true, false, false));
-        items.add(new Item(false,true,false));
-        items.add(new Item(false,false,true));
-        items.add(new Item(false,false,true));
-        items.add(new Item(true,false,false));
-        items.add(new Item(false,true,false));
-        items.add(new Item(false,true,true));
-        items.add(new Item(true,false,true));
-        items.add(new Item(true,true,false));
 
-        ArrayList<Gem> gems = new ArrayList<Gem>();
-        gems.add(new Gem(1,"attack"));
-        gems.add(new Gem(2,"attack"));
-        gems.add(new Gem(2,"attack"));
-        gems.add(new Gem(2,"attack"));
-        gems.add(new Gem(2,"attack"));
-        gems.add(new Gem(2,"attack"));
-        gems.add(new Gem(3,"attack"));
-        gems.add(new Gem(3,"attack"));
-        gems.add(new Gem(3,"attack"));
+        for (int i = 0; i < 20; i++)
+        {
+            ArrayList<Item> items = new ArrayList<Item>();
+            items.add(new Item(true, false, false));
+            items.add(new Item(false,true,false));
+            items.add(new Item(false,false,true));
+            items.add(new Item(false,false,true));
+            items.add(new Item(true,false,false));
+            items.add(new Item(false,true,false));
+            items.add(new Item(false,true,true));
+            items.add(new Item(true,false,true));
+            items.add(new Item(true,true,false));
 
-        gems.add(new Gem(1,"hp"));
-        gems.add(new Gem(3,"hp"));
-        gems.add(new Gem(3,"hp"));
+            ArrayList<Gem> gems = new ArrayList<Gem>();
+            gems.add(new Gem(1,"attack"));
+            gems.add(new Gem(2,"attack"));
+            gems.add(new Gem(2,"attack"));
+            gems.add(new Gem(2,"attack"));
+            gems.add(new Gem(2,"attack"));
+            gems.add(new Gem(2,"attack"));
+            gems.add(new Gem(2,"attack"));
+            gems.add(new Gem(2,"attack"));
+            gems.add(new Gem(2,"attack"));
+            gems.add(new Gem(3,"attack"));
+            gems.add(new Gem(3,"attack"));
+            gems.add(new Gem(3,"attack"));
 
-        gems.add(new Gem(3,"defense"));
-        gems.add(new Gem(1,"defense"));
-        gems.add(new Gem(1,"defense"));
-        gems.add(new Gem(1,"defense"));
-        gems.add(new Gem(4,"defense"));
-        gems.add(new Gem(4,"defense"));
+            gems.add(new Gem(1,"hp"));
+            gems.add(new Gem(2,"hp"));
+            gems.add(new Gem(2,"hp"));
+            gems.add(new Gem(3,"hp"));
+            gems.add(new Gem(3,"hp"));
+            gems.add(new Gem(3,"hp"));
+            gems.add(new Gem(3,"hp"));
 
-        /*Collections.sort(gems, new Comparator<Gem>() {
-            @Override
-            public int compare(Gem o1, Gem o2) {
-                return o2.number - o1.number;
-            }
-        });*/
+            gems.add(new Gem(3,"defense"));
+            gems.add(new Gem(1,"defense"));
+            gems.add(new Gem(1,"defense"));
+            gems.add(new Gem(2,"defense"));
+            gems.add(new Gem(2,"defense"));
+            gems.add(new Gem(2,"defense"));
+            gems.add(new Gem(2,"defense"));
+            gems.add(new Gem(4,"defense"));
+            gems.add(new Gem(4,"defense"));
 
-        Collections.shuffle(gems);
+            /*Collections.sort(gems, new Comparator<Gem>() {
+                @Override
+                public int compare(Gem o1, Gem o2) {
+                    return o2.number - o1.number;
+                }
+            });*/
 
-        /*Collections.sort(gems, new Comparator<Gem>() {
-            @Override
-            public int compare(Gem o1, Gem o2) {
-                return o1.number - o2.number;
-            }
-        });*/
+            Collections.shuffle(gems);
 
-        ArrayList<Item> optimizedGems = determineBestGemLoadout(items, gems);
+            /*Collections.sort(gems, new Comparator<Gem>() {
+                @Override
+                public int compare(Gem o1, Gem o2) {
+                    return o1.number - o2.number;
+                }
+            });*/
+            Thread th = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    ArrayList<Item> optimizedGems = determineBestGemLoadout(items, gems);
+                }
+            });
+            th.start();
+        }
     }
+    public static Object gate = new Object();
     public static ArrayList<Item> output;
     public static int currentHighestVal;
     public static ArrayList<Item> determineBestGemLoadout(ArrayList<Item> items, ArrayList<Gem> gems)
@@ -87,11 +107,12 @@ public class OptimalGems {
         if (!addedGem)
         {
             int value = calculateItemListValue(items);
-            if (value > currentHighestVal)
-            {
-                currentHighestVal = value;
-                printArray(items,value);
-                output = getCopiedArray(items);
+            synchronized (gate) {
+                if (value > currentHighestVal) {
+                    currentHighestVal = value;
+                    printArray(items, value);
+                    output = getCopiedArray(items);
+                }
             }
         }
     }
@@ -129,7 +150,7 @@ public class OptimalGems {
         }
         return (int)value + (int)value2;
     }
-    public static void printArray(ArrayList<Item> items,int value)
+    public static synchronized void printArray(ArrayList<Item> items,int value)
     {
         System.out.println("________________________");
         System.out.println("Val = " + value);

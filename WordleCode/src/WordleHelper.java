@@ -1,12 +1,31 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class WordleHelper {
+public class WordleHelper{
     static ArrayList<String> permutations = new ArrayList<>();
-    public static void main(String[] args) {
+    static ArrayList<String> possibleWords = new ArrayList<>();
+    public static void main(String[] args) throws Exception{
+        Scanner fileScan = new Scanner(new File("WordleGuessList.txt"));
+        possibleWords = new ArrayList<>();
+        while(fileScan.hasNextLine())
+        {
+            possibleWords.add(fileScan.nextLine());
+        }
+        fileScan.close();
+        Scanner fileScan2 = new Scanner(new File("WordleAnswers.txt"));
+        while(fileScan2.hasNextLine())
+        {
+            possibleWords.add(fileScan2.nextLine());
+        }
+        fileScan2.close();
         Scanner scan = new Scanner(System.in);
         do {
+            HashSet<Character> blackLetters = new HashSet<>();
             boolean invalidWordle = false;
             char[] letters = new char[5];
             Arrays.fill(letters, ' ');
@@ -27,11 +46,13 @@ public class WordleHelper {
                     System.out.println("Select option:");
                     System.out.printf("1. Enter word #%d\n", numWords + 1);
                     System.out.println("2. Print current list");
-                    System.out.println("3. End Wordle");
+                    System.out.println("3. Add letter manually");
+                    System.out.println("4. Print valid words");
+                    System.out.println("5. End Wordle");
                     option = scan.nextLine();
                     try {
                         val = Integer.parseInt(option);
-                        if (val < 1 || val > 3) {
+                        if (val < 1 || val > 5) {
                             System.out.println("Error: Enter a number between 1 and 3 inclusive.");
                             option = "";
                         }
@@ -55,12 +76,15 @@ public class WordleHelper {
                                     break;
                                 char c = word.charAt(i);
                                 boolean letterExists = false;
+                                //Add letters to confirmed letters
                                 if (pattern.charAt(i) != 'b') {
+                                    //Check if letter already exists in word
                                     for (int j = 0; j < countLetters; j++) {
                                         if (letters[j] == c) {
                                             letterExists = true;
                                         }
                                     }
+                                    //Add letter to list if already in word
                                     if (!letterExists) {
                                         if (countLetters == letters.length)
                                         {
@@ -70,7 +94,9 @@ public class WordleHelper {
                                         }
                                         letters[countLetters] = c;
                                         countLetters++;
-                                    } else {
+                                    }
+                                    //If letter is in word, check and see if it appears twice.
+                                    else {
                                         for (int j = 0; j < pattern.length(); j++) {
                                             if (i == j)
                                                 continue;
@@ -90,6 +116,14 @@ public class WordleHelper {
                                         }
                                     }
                                 }
+                                //Add Letters to confirmed not in word
+                                else
+                                {
+                                    if (!arrayContains(c,letters))
+                                    {
+                                        blackLetters.add(c);
+                                    }
+                                }
                             }
                             permutations = new ArrayList<>();
                             printAllPermutations(letters, "");
@@ -101,9 +135,33 @@ public class WordleHelper {
                         break;
                     case 2:
                         System.out.printf("CurrentList: {%c,%c,%c,%c,%c}\n", letters[0], letters[1], letters[2], letters[3], letters[4]);
+                        printAllPermutations(letters,"");
+                        decreaseList(words);
                         printList(permutations);
                         break;
                     case 3:
+                        if (countLetters == letters.length)
+                        {
+                            System.out.println("Error: List is full");
+                            break;
+                        }
+                        System.out.println("Enter a letter to add to list manually:");
+                        String letter = scan.nextLine();
+                        if (letter.length() != 1) {
+                            System.out.println("Error: Please select only one letter");
+                            break;
+                        }
+                        if (!Character.isAlphabetic(letter.charAt(0)))
+                        {
+                            System.out.println("Error: Character is not alphabetic");
+                            break;
+                        }
+                        letters[countLetters] = letter.charAt(0);
+                        break;
+                    case 4:
+                        printList(getAllPossibleWords(permutations,blackLetters));
+                        break;
+                    case 5:
                         isDone = true;
                         break;
                 }
@@ -122,6 +180,44 @@ public class WordleHelper {
         for (String permutation : permutations) {
             System.out.println(permutation);
         }
+        System.out.println("Total: " + permutations.size());
+    }
+    public static ArrayList<String> getAllPossibleWords(ArrayList<String> permutations, HashSet<Character> blackLetters)
+    {
+        ArrayList<String> allWords = new ArrayList<>();
+        for (String s: possibleWords)
+        {
+            allWords.add(s);
+        }
+        for (int i = allWords.size() - 1; i >= 0; i--)
+        {
+            for (Character c: blackLetters)
+            {
+                if (allWords.get(i).contains(c + ""))
+                {
+                    allWords.remove(i);
+                    break;
+                }
+            }
+        }
+        for (int i = allWords.size() - 1; i >= 0; i--)
+        {
+            boolean found = false;
+            for (String s: permutations)
+            {
+                s = s.replace(" ","[a-z]");
+                Pattern pattern = Pattern.compile(s);
+                Matcher matcher = pattern.matcher(allWords.get(i));
+                if (matcher.find())
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+                allWords.remove(i);
+        }
+        return allWords;
     }
     public static void decreaseList(ArrayList<WordleWord> words) {
         for (int i = permutations.size() - 1; i >= 0; i--)
@@ -154,6 +250,15 @@ public class WordleHelper {
                     break;
             }
         }
+    }
+    public static boolean arrayContains(char ch, char[] letters)
+    {
+        for (char c: letters)
+        {
+            if (c == ch)
+                return true;
+        }
+        return false;
     }
     public static void printAllPermutations(char[] letters, String s)
     {

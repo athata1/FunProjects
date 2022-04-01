@@ -160,6 +160,7 @@ public class NonogramSolver {
 
         while (r < board.length)
         {
+            System.out.println("Here");
             double[] probabilities = findProbabilityOfOccurrence(board[r],rowRules[r]);
             for (int j = 0; j < probabilities.length; j++)
             {
@@ -177,6 +178,7 @@ public class NonogramSolver {
 
         while (c < board[0].length)
         {
+            System.out.println("Here");
             String[] colArray = generateColumnArray(c);
             double[] probabilities = findProbabilityOfOccurrence(colArray,colRules[c]);
             for (int i = 0; i < board.length; i++)
@@ -195,7 +197,44 @@ public class NonogramSolver {
     {
         runRule1();
         runRule2();
+        runRule3();
         printNonogram();
+    }
+    public void runRule3()
+    {
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][0].equals("S")) {
+                for (int j = 0; j < rowRules[i][0]; j++) {
+                    board[i][j] = "S";
+                }
+                if (rowRules[i][0] <= board[i].length - 1)
+                    board[i][rowRules[i][0]] = "X";
+            }
+            if (board[i][board[i].length - 1].equals("S")) {
+                for (int j = 0; j < rowRules[i][rowRules[i].length - 1]; j++) {
+                    board[i][board[i].length - 1 - j] = "S";
+                }
+                if (board[i].length - 1 - rowRules[i][rowRules[i].length - 1] >= 0)
+                    board[i][board[i].length - 1 - rowRules[i][rowRules[i].length - 1]] = "X";
+            }
+        }
+        for (int i = 0; i < board[0].length; i++) {
+            if (board[0][i].equals("S")) {
+                for (int j = 0; j < colRules[i][0]; j++) {
+                    board[j][i] = "S";
+                }
+                if (colRules[i][0] <= board.length - 1)
+                    board[colRules[i][0]][i] = "X";
+            }
+            if (board[board.length - 1][i].equals("S")) {
+                for (int j = 0; j < colRules[i][colRules[i].length - 1]; j++) {
+                    board[board.length - 1 - j][i] = "S";
+                }
+                if (board.length - 1 - colRules[i][colRules[i].length - 1] >= 0) {
+                    board[board.length - 1 - colRules[i][colRules[i].length - 1]][i] = "X";
+                }
+            }
+        }
     }
     public void runRule1()
     {
@@ -483,12 +522,68 @@ public class NonogramSolver {
     {
         probabilities = new double[arr.length];
         total = 0;
-        helper(arr,rule);
+        helper2(0,new ArrayList<Integer>(),arr,rule);
         for(int i = 0; i < probabilities.length; i++)
         {
             probabilities[i] = probabilities[i]/total;
         }
         return probabilities;
+    }
+    private void helper2(int depth, ArrayList<Integer> currentIndexes, String[] arr, int[] rule) {
+        if (depth == rule.length) {
+            int[] row = new int[arr.length];
+            Arrays.fill(row,0);
+            for (int i = 0; i < currentIndexes.size(); i++) {
+                for (int j = currentIndexes.get(i); j < rule[i] + currentIndexes.get(i); j++) {
+                    row[j]++;
+                }
+            }
+            for (int i = 0; i < arr.length; i++) {
+                if ((row[i] == 0 && arr[i].equals("S")) || (row[i] == 1 && arr[i].equals("X")))
+                    return;
+            }
+            total++;
+            for (int i = 0; i < arr.length; i++) {
+                if (row[i] == 1)
+                    probabilities[i]++;
+            }
+            return;
+        }
+        int longestVal = 0;
+        for (int i = depth; i < rule.length; i++) {
+            longestVal += rule[i];
+            longestVal++;
+        }
+        longestVal--;
+        int start = 0;
+        if (currentIndexes.size() != 0)
+            start = currentIndexes.get(currentIndexes.size() - 1) + rule[depth - 1] + 1;
+        for (int i = start; i < arr.length - longestVal + 1; i++) {
+            boolean isValid = true;
+            int countBlack = 0;
+            for (int j = i; j < rule[depth] + i; j++) {
+                if (arr[j].equals("X")) {
+                    isValid = false;
+                    break;
+                }
+                else if (arr[j].equals("S")) {
+                    countBlack++;
+                }
+            }
+            if (rule[depth] + i < arr.length && arr[rule[depth] + i].equals("S"))
+                continue;
+            if (i - 1 >= 0 && arr[i - 1].equals("S"))
+                continue;
+            if (!isValid)
+                continue;
+
+            currentIndexes.add(i);
+            helper2(depth + 1, currentIndexes, arr, rule);
+            currentIndexes.remove(currentIndexes.size() - 1);
+            if (countBlack == rule[depth]) {
+                i += rule[depth] - 1;
+            }
+        }
     }
     private void helper(String[] arr, int[] rule)
     {

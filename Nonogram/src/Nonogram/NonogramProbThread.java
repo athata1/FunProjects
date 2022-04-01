@@ -18,6 +18,7 @@ public class NonogramProbThread implements Runnable{
     public void run()
     {
         findProbabilityOfOccurrence(arr,rule);
+        System.out.println("Done");
     }
     public double[] getProbabilities() {
         return probabilities;
@@ -27,6 +28,9 @@ public class NonogramProbThread implements Runnable{
     {
         probabilities = new double[arr.length];
         //helper(arr,rule);
+        if (rule[0] == 0) {
+            return;
+        }
         helper2(0,new ArrayList<Integer>(),arr,rule);
         for(int i = 0; i < probabilities.length; i++)
         {
@@ -34,7 +38,7 @@ public class NonogramProbThread implements Runnable{
         }
     }
     private void helper2(int depth, ArrayList<Integer> currentIndexes, String[] arr, int[] rule) {
-        if (currentIndexes.size() == rule.length) {
+        if (depth == rule.length) {
             int[] row = new int[arr.length];
             Arrays.fill(row,0);
             for (int i = 0; i < currentIndexes.size(); i++) {
@@ -43,7 +47,7 @@ public class NonogramProbThread implements Runnable{
                 }
             }
             for (int i = 0; i < arr.length; i++) {
-                if (row[i] == 0 && arr[i].equals("S") || row[i] == 1 && arr[i].equals("X"))
+                if ((row[i] == 0 && arr[i].equals("S")) || (row[i] == 1 && arr[i].equals("X")))
                     return;
             }
             total++;
@@ -63,9 +67,31 @@ public class NonogramProbThread implements Runnable{
         if (currentIndexes.size() != 0)
             start = currentIndexes.get(currentIndexes.size() - 1) + rule[depth - 1] + 1;
         for (int i = start; i < arr.length - longestVal + 1; i++) {
+            if (rule[depth] + i < arr.length && arr[rule[depth] + i].equals("S"))
+                continue;
+            if (i - 1 >= 0 && arr[i - 1].equals("S"))
+                continue;
+
+            boolean isValid = true;
+            int countBlack = 0;
+            for (int j = i; j < rule[depth] + i; j++) {
+                if (arr[j].equals("X")) {
+                    isValid = false;
+                    break;
+                }
+                else if (arr[j].equals("S")) {
+                    countBlack++;
+                }
+            }
+            if (!isValid)
+                continue;
+
             currentIndexes.add(i);
             helper2(depth + 1, currentIndexes, arr, rule);
             currentIndexes.remove(currentIndexes.size() - 1);
+            if (countBlack == rule[depth]) {
+                i += rule[depth] - 1;
+            }
         }
     }
     private void helper(String[] arr, int[] rule)

@@ -1,6 +1,5 @@
 import java.awt.*;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
@@ -13,7 +12,7 @@ public class RunnerCode extends JPanel implements MouseListener
     final int LINELENGTH;
     public RunnerCode()
     {
-        lSystem = new HilbertCurve();
+        lSystem = new FractalPlant();
         LINELENGTH = lSystem.getLength();
         addMouseListener(this);
     }
@@ -21,6 +20,7 @@ public class RunnerCode extends JPanel implements MouseListener
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
+        g.setColor(Color.RED);
         turtle = new Turtle(lSystem.getPosX(),lSystem.getPosY(),g);
         lSystem.drawLSystem(turtle,LINELENGTH,g);
         g.drawString("Left Click = Increase Generation +1",5,20);
@@ -55,13 +55,18 @@ public class RunnerCode extends JPanel implements MouseListener
 
     public static void main(String[] args)
     {
-        RunnerCode t = new RunnerCode();
-        JFrame jf = new JFrame();
-        jf.setTitle("Tester");
-        jf.setSize(1000,750);
-        t.setBackground(Color.WHITE);
-        jf.setVisible(true);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf.add(t);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                RunnerCode t = new RunnerCode();
+                JFrame jf = new JFrame();
+                jf.setTitle("Tester");
+                jf.setSize(1000,750);
+                t.setBackground(Color.WHITE);
+                jf.setVisible(true);
+                jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                jf.add(t);
+            }
+        });
     }
 }

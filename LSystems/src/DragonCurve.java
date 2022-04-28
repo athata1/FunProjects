@@ -2,9 +2,9 @@ import java.awt.*;
 public class DragonCurve implements LSystems
 {
     private final double PI = Math.PI;
-    private final int POSX = 750;
-    private final int POSY = 250;
-    private final int LENGTH = 5;
+    private final int POSX = 250;
+    private final int POSY = 350;
+    private final int LENGTH = 1;
     private String str;
     String[][] rules = {{"X","X+YF+"},
             {"Y","-FX-Y"}};

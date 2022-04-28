@@ -14,28 +14,31 @@ public class Turtle
     {
         this.posX = posX;
         this.posY = posY;
-        angle = Math.PI;
+        angle = -Math.PI/2;
         this.g = g;
         saveX = new ArrayList<Double>();
         saveY = new ArrayList<Double>();
         saveAngle = new ArrayList<Double>();
     }
 
-    public void draw(int length)
+    public void draw(double length)
     {
-        g.drawLine((int)Math.round(posX),(int)Math.round(posY),(int)Math.round(posX + length*Math.sin(angle)), (int)Math.round(posY + length*Math.cos(angle)));
-        posX += length*Math.sin(angle);
-        posY += length*Math.cos(angle);
+        g.drawLine((int)Math.round(posX),(int)Math.round(posY),(int)Math.round(posX + length*Math.cos(angle)), (int)Math.round(posY + length*Math.sin(angle)));
+        posX += length*Math.cos(angle);
+        posY += length*Math.sin(angle);
     }
-
+    public void move(int length) {
+        posX += length*Math.cos(angle);
+        posY += length*Math.sin(angle);
+    }
     public void turnLeft(double angle01)
     {
-        angle += angle01;
+        angle -= angle01;
     }
 
     public void turnRight(double angle01)
     {
-        angle -= angle01;
+        angle += angle01;
     }
 
     public void push()

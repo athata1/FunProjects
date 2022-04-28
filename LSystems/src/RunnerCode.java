@@ -1,5 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.InputEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 
@@ -12,7 +13,7 @@ public class RunnerCode extends JPanel implements MouseListener
     final int LINELENGTH;
     public RunnerCode()
     {
-        lSystem = new FractalPlant();
+        lSystem = new DragonCurve();
         LINELENGTH = lSystem.getLength();
         addMouseListener(this);
     }
@@ -20,7 +21,6 @@ public class RunnerCode extends JPanel implements MouseListener
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        g.setColor(Color.RED);
         turtle = new Turtle(lSystem.getPosX(),lSystem.getPosY(),g);
         lSystem.drawLSystem(turtle,LINELENGTH,g);
         g.drawString("Left Click = Increase Generation +1",5,20);
@@ -32,13 +32,14 @@ public class RunnerCode extends JPanel implements MouseListener
         Thread th = new Thread(new Runnable() {
             @Override
             public void run() {
-                if (e.getModifiers() == MouseEvent.BUTTON3_MASK && count > 0)
+                System.out.println(e.getModifiersEx());
+                if (e.getModifiersEx() == InputEvent.META_DOWN_MASK && count > 0)
                 {
                     count--;
                     lSystem.subtract();
                     repaint();
                 }
-                if (e.getModifiers() == MouseEvent.BUTTON1_MASK)
+                if (e.getModifiersEx() == 0)
                 {
                     count++;
                     lSystem.add();

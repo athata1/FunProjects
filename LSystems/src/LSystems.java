@@ -44,6 +44,7 @@ public interface LSystems
                 {
                     temp += rules[j][1];
                     index = 0;
+                    break;
                 }
             }
             if (index == -1)

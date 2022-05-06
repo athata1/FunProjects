@@ -1,7 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class AStarThread  extends PathFindingThread implements Runnable{
+public class DijkstraThread extends PathFindingThread implements Runnable{
     Node[][] board;
     int startC;
     int startR;
@@ -10,7 +10,8 @@ public class AStarThread  extends PathFindingThread implements Runnable{
     int width;
     int height;
     ArrayList<int[]> points;
-    public AStarThread(Node[][] board, int startR, int startC, int endR, int endC) {
+    final Object boardObj = new Object();
+    public DijkstraThread(Node[][] board, int startR, int startC, int endR, int endC) {
         this.board = board;
         this.startC = startC;
         this.startR = startR;
@@ -20,9 +21,6 @@ public class AStarThread  extends PathFindingThread implements Runnable{
             height = board.length;
             width = board[0].length;
         }
-    }
-    public Object getObject() {
-        return super.getObject();
     }
 
     public void run() {

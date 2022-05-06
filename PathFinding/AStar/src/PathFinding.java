@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Scanner;
 
-public class PathFinding extends JPanel implements MouseListener, MouseMotionListener, KeyListener {
+public class PathFinding extends JPanel implements MouseListener, MouseMotionListener, KeyListener, ActionListener {
 
     Node[][] board;
     final int BOXSIZE = 20;
@@ -14,6 +14,8 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
     int endC;
     int width;
     int height;
+    PathFindingThread thread;
+    Timer tm = new Timer(10,this);
     public PathFinding(int size) {
         addMouseListener(this);
         addMouseMotionListener(this);
@@ -30,6 +32,7 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
                 board[r][c] = new Node(r*BOXSIZE + BOXSIZE/2,c*BOXSIZE+BOXSIZE/2);
             }
         }
+        thread = null;
         mode = "start";
         startC = -1;
         startR = -1;
@@ -40,21 +43,42 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         drawBoard(g);
+        tm.start();
     }
     public void drawBoard(Graphics g) {
-        for (int r = 0; r < height; r++) {
-            for (int c = 0; c < width; c++) {
-                g.setColor(board[r][c].getColor());
-                g.fillRect(c*BOXSIZE, r*BOXSIZE,BOXSIZE,BOXSIZE);
+        if (thread == null) {
+            for (int r = 0; r < height; r++) {
+                for (int c = 0; c < width; c++) {
+                    g.setColor(board[r][c].getColor());
+                    g.fillRect(c * BOXSIZE, r * BOXSIZE, BOXSIZE, BOXSIZE);
+                }
+            }
+            for (int r = 0; r < height + 1; r++) {
+                g.setColor(Color.BLACK);
+                g.drawLine(0, r * BOXSIZE, height * BOXSIZE, r * BOXSIZE);
+            }
+            for (int c = 0; c < height + 1; c++) {
+                g.setColor(Color.BLACK);
+                g.drawLine(c * BOXSIZE, 0, c * BOXSIZE, width * BOXSIZE);
             }
         }
-        for (int r = 0; r < height + 1; r++) {
-            g.setColor(Color.BLACK);
-            g.drawLine(0, r*BOXSIZE, height*BOXSIZE,r*BOXSIZE);
-        }
-        for (int c = 0; c < height + 1; c++) {
-            g.setColor(Color.BLACK);
-            g.drawLine(c*BOXSIZE, 0, c*BOXSIZE,width*BOXSIZE);
+        else {
+            for (int r = 0; r < height; r++) {
+                for (int c = 0; c < width; c++) {
+                    synchronized (thread.boardObj) {
+                        g.setColor(board[r][c].getColor());
+                    }
+                    g.fillRect(c * BOXSIZE, r * BOXSIZE, BOXSIZE, BOXSIZE);
+                }
+            }
+            for (int r = 0; r < height + 1; r++) {
+                g.setColor(Color.BLACK);
+                g.drawLine(0, r * BOXSIZE, height * BOXSIZE, r * BOXSIZE);
+            }
+            for (int c = 0; c < height + 1; c++) {
+                g.setColor(Color.BLACK);
+                g.drawLine(c * BOXSIZE, 0, c * BOXSIZE, width * BOXSIZE);
+            }
         }
     }
     @Override
@@ -128,6 +152,7 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
 
     @Override
     public void keyTyped(KeyEvent e) {
+        System.out.println(e.getKeyChar());
         if (mode.equals("running")) {
             return;
         }
@@ -141,7 +166,7 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
         if (e.getKeyChar() == 's') {
             mode = "start";
         }
-        if (e.getKeyChar() == 'r') {
+        if (e.getKeyChar() == 'r' && startR != -1 && endR != -1) {
             mode = "running";
             Thread th = new Thread(new AStarThread(board, startR, startC, endR, endC));
             th.start();
@@ -154,6 +179,11 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
 
     @Override
     public void keyReleased(KeyEvent e) {}
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        repaint();
+    }
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);

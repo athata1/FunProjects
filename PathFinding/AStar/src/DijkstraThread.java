@@ -24,14 +24,6 @@ public class DijkstraThread extends PathFindingThread implements Runnable{
     }
 
     public void run() {
-        for (int r = 0; r < height; r++) {
-            for (int c = 0; c < width; c++) {
-                synchronized (boardObj) {
-                    board[r][c].setHCost(c, r, endC, endR);
-                }
-            }
-        }
-
         points = new ArrayList<int[]>();
         points.add(new int[]{startR, startC});
         synchronized (boardObj) {
@@ -47,7 +39,7 @@ public class DijkstraThread extends PathFindingThread implements Runnable{
                 int r2 = points.get(currIndex)[0];
                 int c2 = points.get(currIndex)[1];
                 synchronized (boardObj) {
-                    if (board[r1][c1].getFCost() <= board[r2][c2].getFCost()) {
+                    if (board[r1][c1].getGCost() <= board[r2][c2].getGCost()) {
                         currIndex = i;
                     }
                 }

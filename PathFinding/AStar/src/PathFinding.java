@@ -65,7 +65,7 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
         else {
             for (int r = 0; r < height; r++) {
                 for (int c = 0; c < width; c++) {
-                    synchronized (thread.boardObj) {
+                    synchronized (thread.getObject()) {
                         g.setColor(board[r][c].getColor());
                     }
                     g.fillRect(c * BOXSIZE, r * BOXSIZE, BOXSIZE, BOXSIZE);
@@ -152,7 +152,7 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
 
     @Override
     public void keyTyped(KeyEvent e) {
-        System.out.println(e.getKeyChar());
+        System.out.println((int)e.getKeyChar());
         if (mode.equals("running")) {
             return;
         }
@@ -166,9 +166,10 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
         if (e.getKeyChar() == 's') {
             mode = "start";
         }
-        if (e.getKeyChar() == 'r' && startR != -1 && endR != -1) {
+        if (e.getKeyChar() == 10 && startR != -1 && endR != -1) {
             mode = "running";
-            Thread th = new Thread(new AStarThread(board, startR, startC, endR, endC));
+            thread = new DijkstraThread(board, startR, startC, endR, endC);
+            Thread th = new Thread(thread);
             th.start();
         }
         repaint();

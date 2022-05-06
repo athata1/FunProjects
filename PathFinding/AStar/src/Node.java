@@ -18,6 +18,9 @@ public class Node
         g = Integer.MAX_VALUE;
         mode = "grass";
     }
+    public void setHCost(int currentX, int currentY, int endX, int endY) {
+        this.h = Math.abs(endX-currentX)*10 + Math.abs(endY-currentY)*10;
+    }
     public String getMode()
     {
         return mode;

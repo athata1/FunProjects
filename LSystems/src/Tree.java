@@ -27,8 +27,6 @@ public class Tree implements LSystems
                 turtle.push();
             else if (str.charAt(i) == ']')
             {
-                g.setColor(Color.GREEN);
-                fillCircle((int)turtle.getPosX(),(int)turtle.getPosY(),3,g);
                 g.setColor(Color.BLACK);
                 turtle.pop();
             }

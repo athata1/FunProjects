@@ -79,7 +79,6 @@ public class Original extends JPanel implements ActionListener,MouseListener,Mou
             startX = pressedX;
             arr[pressedX][pressedY].setColor(Color.MAGENTA);
             click1 = false;
-            points.add(new int[]{startX,startY});
         }
         else if (click2)
         {
@@ -123,6 +122,8 @@ public class Original extends JPanel implements ActionListener,MouseListener,Mou
         {
             condition = true;
             click3 = false;
+            points.add(new int[]{startX,startY});
+            arr[startX][startY].setGCost(0);
         }
     }
     public void keyReleased(KeyEvent e){}
@@ -192,7 +193,20 @@ public class Original extends JPanel implements ActionListener,MouseListener,Mou
                     minG = Math.min(minG, arr[currX][currY].getGCost());
                 }
             }
+            if (minG == Integer.MAX_VALUE)
+                minG = -10;
             arr[x1][y1].setGCost(minG + 10);
+            if (x1 == endX && y1 == endY)
+            {
+                condition = false;
+                str = "Found";
+                cords[0] = x1;
+                cords[1] = y1;
+                tm.stop();
+                tm = new Timer(100,this);
+                tm.start();
+                return;
+            }
 
             for(int i = 0; i < nums.length; i++)
             {
@@ -216,16 +230,6 @@ public class Original extends JPanel implements ActionListener,MouseListener,Mou
                     {
                         arr[currX][currY].setColor(Color.YELLOW);
                         points.add(new int[]{currX,currY});
-                    }
-                    if (currX == endX && currY == endY)
-                    {
-                        condition = false;
-                        str = "Found";
-                        cords[0] = currX;
-                        cords[1] = currY;
-                        tm.stop();
-                        tm = new Timer(100,this);
-                        tm.start();
                     }
                 }
             }

@@ -15,7 +15,7 @@ public class SierpinskiTriangle implements LSystems
     public void drawLSystem(Turtle turtle, int length, Graphics g)
     {
         System.out.println(str);
-        turtle.setAngle(7*Math.PI/6);
+        turtle.turnLeft(Math.PI/6);
         for (int i = 0; i < str.length(); i++)
         {
             if (str.charAt(i) == 'F' || str.charAt(i) == 'G')

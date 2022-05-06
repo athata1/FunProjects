@@ -4,8 +4,8 @@ import java.util.Queue;
 public class StepsThread implements Runnable
 {
     private Queue<Move> moves;
-    private int numBoxes;
-    private int destination;
+    private final int numBoxes;
+    private final int destination;
     private static Object gate = new Object();
     public StepsThread(int numBoxes, int destination)
     {

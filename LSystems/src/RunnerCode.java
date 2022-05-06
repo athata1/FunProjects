@@ -13,7 +13,8 @@ public class RunnerCode extends JPanel implements MouseListener
     final int LINELENGTH;
     public RunnerCode()
     {
-        lSystem = new DragonCurve();
+        setPreferredSize(new Dimension(1000,1000));
+        lSystem = new Tree();
         LINELENGTH = lSystem.getLength();
         addMouseListener(this);
     }
@@ -61,6 +62,7 @@ public class RunnerCode extends JPanel implements MouseListener
             public void run() {
                 RunnerCode t = new RunnerCode();
                 JFrame jf = new JFrame();
+                jf.setLayout(new FlowLayout(FlowLayout.LEFT));
                 jf.setTitle("Tester");
                 jf.setSize(1000,750);
                 t.setBackground(Color.WHITE);

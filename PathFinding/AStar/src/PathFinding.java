@@ -168,7 +168,7 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
         }
         if (e.getKeyChar() == 10 && startR != -1 && endR != -1) {
             mode = "running";
-            thread = new DijkstraThread(board, startR, startC, endR, endC);
+            thread = new AStarThread(board, startR, startC, endR, endC);
             Thread th = new Thread(thread);
             th.start();
         }

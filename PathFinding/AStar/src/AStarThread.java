@@ -82,8 +82,6 @@ public class AStarThread  extends PathFindingThread implements Runnable{
                     }
                 }
             }
-            if (minG == Integer.MAX_VALUE)
-                minG = -10;
             synchronized (boardObj) {
                 board[r1][c1].setGCost(minG + 10);
             }

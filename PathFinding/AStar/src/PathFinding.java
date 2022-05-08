@@ -42,6 +42,7 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        requestFocus(true);
         drawBoard(g);
         tm.start();
     }

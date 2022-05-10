@@ -68,6 +68,10 @@ public class RunnerCode extends JPanel implements MouseListener
                 t.setBackground(Color.WHITE);
                 jf.setVisible(true);
                 jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                /*JScrollPane contentPane = new JScrollPane(t);
+                contentPane.getVerticalScrollBar().setUnitIncrement(10);
+                contentPane.setPreferredSize(new Dimension(600, 600));
+                jf.add(contentPane);*/
                 jf.add(t);
             }
         });

@@ -14,7 +14,7 @@ public class RunnerCode extends JPanel implements MouseListener
     public RunnerCode()
     {
         setPreferredSize(new Dimension(1000,1000));
-        lSystem = new Tree();
+        lSystem = new Rings();
         LINELENGTH = lSystem.getLength();
         addMouseListener(this);
     }

@@ -15,5 +15,6 @@ void add_rotor(enigma *, char *);
 void set_indexes(enigma *, char *);
 void add_reflector(enigma *, char *);
 void free_enigma(enigma *);
+char *encrypt_text(enigma *, char *);
 
 #endif

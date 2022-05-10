@@ -6,11 +6,11 @@ int main() {
 	
 	//Initialize enigma
 	enigma *enigma_struct = enigma_init();
-	add_rotor(enigma_struct, "JGDQOXUSCAMIFRVTPNEWKBLZYH");
-	add_rotor(enigma_struct, "NTZPSFBOKMWRCJDIVLAEYUXHGQ");
-	add_rotor(enigma_struct, "JVIUBHTCDYAKEQZPOSGXNRMWFL");
+	add_rotor(enigma_struct, "BDFHJLCPRTXVZNYEIWGAKMUSQO");
+	add_rotor(enigma_struct, "AJDKSIRUXBLMWTMCQGZNPYFVOE");
+	add_rotor(enigma_struct, "EKMFLGDQVZNTOWYHXUSPAJBRCJ");
 
-	add_reflector(enigma_struct, "QYHOGNECVPUZTFDJAXWMKISRBL");
+	add_reflector(enigma_struct, "YRUHQSLDPXNGOKMIEBFZCWVJAT");
 
 	set_indexes(enigma_struct, "DOG");
 
@@ -21,6 +21,7 @@ int main() {
 	printf("Word to be encrypted/decrypted: %s\n", buff);
 	
 	//Encrypt word
+	encrypt_text(enigma_struct, buff);
 
 	//Free all malloc memory
 	free_enigma(enigma_struct);

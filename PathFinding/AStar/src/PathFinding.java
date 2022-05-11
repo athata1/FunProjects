@@ -16,12 +16,14 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
     int height;
     PathFindingThread thread;
     Timer tm = new Timer(10,this);
-    public PathFinding(int size) {
+    int pathfindingAlgo;
+    public PathFinding(int size, int pathfindingAlgo) {
         addMouseListener(this);
         addMouseMotionListener(this);
         addKeyListener(this);
         setFocusable(true);
         setFocusTraversalKeysEnabled(true);
+        this.pathfindingAlgo = pathfindingAlgo;
         width = size/BOXSIZE;
         height = size/BOXSIZE;
         board = new Node[size/BOXSIZE][size/BOXSIZE];
@@ -169,7 +171,17 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
         }
         if (e.getKeyChar() == 10 && startR != -1 && endR != -1) {
             mode = "running";
-            thread = new AStarThread(board, startR, startC, endR, endC);
+            PathFindingThread thread = null;
+            if (pathfindingAlgo == 0) {
+                thread = new AStarThread(board, startR, startC, endR, endC);
+            }
+            if (pathfindingAlgo == 1) {
+                thread = new DijkstraThread(board, startR, startC, endR, endC);
+            }
+            if (pathfindingAlgo == 2) {
+                thread = new BFSThread(board, startR, startC, endR, endC);
+            }
+            assert thread != null;
             Thread th = new Thread(thread);
             th.start();
         }
@@ -189,9 +201,30 @@ public class PathFinding extends JPanel implements MouseListener, MouseMotionLis
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Enter size (Must be multiple of 10): ");
-        int size = scan.nextInt();
-        PathFinding t = new PathFinding(size);
+        int size = 0;
+        while(true) {
+            try{
+                size = Integer.parseInt(JOptionPane.showInputDialog("Enter size of board (Must be multiple of 10)"));
+                break;
+            }catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: Please type a positive integer");
+            }
+        }
+        int pathfindingAlgo = 0;
+        while (true) {
+            pathfindingAlgo = JOptionPane.showOptionDialog(null,
+                                                        "Click which pathfinding algorithm you want to use:",
+                                                            "Pathfinding",
+                                                                JOptionPane.DEFAULT_OPTION,
+                                                                JOptionPane.INFORMATION_MESSAGE,
+                                                                null,
+                                                                new String[]{"AStar", "Dijkstra", "Breath First"},
+                                                                "AStar");
+            if (pathfindingAlgo != -1) {
+                break;
+            }
+        }
+        PathFinding t = new PathFinding(size, pathfindingAlgo);
         JFrame jf = new JFrame();
         jf.setTitle("Original");
         jf.setSize(size+12,size+35);

@@ -14,11 +14,18 @@ int main() {
 
 	add_reflector(enigma_struct, "YRUHQSLDPXNGOKMIEBFZCWVJAT");
 
-	set_indexes(enigma_struct, "DOG");
+	set_indexes(enigma_struct, "AFP");
 	
-	set_ring_setting(enigma_struct, 0, 'B');
-	
-	add_plug_board(enigma_struct, 'E', 'B');
+	add_plug_board(enigma_struct, 'Q', 'H');
+	add_plug_board(enigma_struct, 'E', 'N');
+	add_plug_board(enigma_struct, 'R', 'M');
+	add_plug_board(enigma_struct, 'T', 'L');
+	add_plug_board(enigma_struct, 'Y', 'S');
+	add_plug_board(enigma_struct, 'U', 'I');
+	add_plug_board(enigma_struct, 'O', 'K');
+	add_plug_board(enigma_struct, 'P', 'C');
+	add_plug_board(enigma_struct, 'D', 'V');
+	add_plug_board(enigma_struct, 'F', 'G');
 
 	//Get word to be encrypted
 	char buff[1000];

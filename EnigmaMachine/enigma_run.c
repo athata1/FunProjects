@@ -1,5 +1,7 @@
 #include "enigma.h"
 
+
+#include <malloc.h>
 #include <stdio.h>
 
 int main() {
@@ -7,8 +9,8 @@ int main() {
 	//Initialize enigma
 	enigma *enigma_struct = enigma_init();
 	add_rotor(enigma_struct, "BDFHJLCPRTXVZNYEIWGAKMUSQO");
-	add_rotor(enigma_struct, "AJDKSIRUXBLMWTMCQGZNPYFVOE");
-	add_rotor(enigma_struct, "EKMFLGDQVZNTOWYHXUSPAJBRCJ");
+	add_rotor(enigma_struct, "AJDKSIRUXBLHWTMCQGZNPYFVOE");
+	add_rotor(enigma_struct, "EKMFLGDQVZNTOWYHXUSPAIBRCJ");
 
 	add_reflector(enigma_struct, "YRUHQSLDPXNGOKMIEBFZCWVJAT");
 
@@ -21,9 +23,10 @@ int main() {
 	printf("Word to be encrypted/decrypted: %s\n", buff);
 	
 	//Encrypt word
-	encrypt_text(enigma_struct, buff);
-
+	char *output = encrypt_text(enigma_struct, buff);
+	printf("Encypted/Decrypted Enigma cypher: %s\n", output);
 	//Free all malloc memory
 	free_enigma(enigma_struct);
+	free(output);
 
 }

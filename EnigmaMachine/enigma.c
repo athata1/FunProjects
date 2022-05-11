@@ -83,24 +83,21 @@ char *encrypt_text(enigma *enigma_struct, char *text) {
 
 	char *output = malloc(strlen(text) + 1);
 
-	//int len = strlen(text);
-	/*for (int i = 0; i < len; i++) {
+	int len = strlen(text);
+	for (int i = 0; i < len; i++) {
 		if (text[i] >= 'A' && (text[i] <= 'Z')) {
 			output[i] = encrypt_char(enigma_struct, text[i]);
 		}
 		else {
 			output[i] = text[i];
 		}
-	}*/
-
-	encrypt_char(enigma_struct, text[0]);
+	}
 	return output;
 }
 
 static char encrypt_char(enigma *enigma_struct, char letter) {
 	assert(enigma_struct != NULL);
 	increment_rotors(enigma_struct);
-	
 
 	//Iterate through rotors
 	int curr_index = (enigma_struct->indexes[0] + letter - 'A') % 26;	
@@ -109,18 +106,37 @@ static char encrypt_char(enigma *enigma_struct, char letter) {
 		char curr_char = enigma_struct->rotors[i][curr_index];
 		curr_index = (curr_char - 'A' - enigma_struct->indexes[i] + 26
 					 + enigma_struct->indexes[i + 1]) % 26;
-		printf("%c\n", curr_char);
 	}
 	char curr_char = enigma_struct->rotors[len - 1][curr_index];
-	printf("%c\n", curr_char);
 	curr_index = (curr_char - 'A' - enigma_struct->indexes[len - 1] + 26) % 26;
-	printf("%c\n", curr_index + 'A');
-	
+
 	//Go through reflector
 	curr_index = (enigma_struct->reflector[curr_index] - 'A' +
 				 enigma_struct->indexes[len - 1]) % 26;
-	printf("%d\n", curr_index);
-	return ' ';
+	
+	//Go through rotors backwards
+	for (int i = len - 1; i >= 1; i--) {
+		int index = -1;
+		for (int j = 0; j < 26; j++) {
+			if (enigma_struct->rotors[i][j] == curr_index + 'A') {
+				index = j;
+				break;
+			}
+		}
+		assert(index != -1);
+		curr_index = (26 + index - enigma_struct->indexes[i] 
+					 + enigma_struct->indexes[i - 1]) % 26;
+	}
+	int index = -1;
+	for (int i = 0; i < 26; i++) {
+		if (enigma_struct->rotors[0][i] == curr_index + 'A') {
+			index = i;
+			break;
+		}
+	}
+	assert(index != -1);
+	curr_index = (26 + index - enigma_struct->indexes[0]) % 26;
+	return curr_index + 'A';
 }
 
 static void increment_rotors(enigma *enigma_struct) {

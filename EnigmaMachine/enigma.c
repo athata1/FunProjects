@@ -14,6 +14,10 @@ enigma *enigma_init() {
 	enigma_struct->rotors = NULL;
 	enigma_struct->reflector = NULL;
 	enigma_struct->indexes = NULL;
+
+	for (int i = 0; i < 24; i++) {
+		enigma_struct->plug_board[i] = 0;
+	}
 	return enigma_struct;
 }
 
@@ -50,8 +54,7 @@ void set_ring_setting(enigma *enigma_struct,int rotor_index, char letter) {
 
 	int prev_shift = enigma_struct->curr_ring_setting[rotor_index];
 	int new_shift = letter - 'A';
-	printf("%d %d\n", prev_shift, new_shift);
-	printf("%s\n", enigma_struct->rotors[rotor_index]);
+
 	for (int i = 0; i < 26; i++) {
 		char new_char = (enigma_struct->rotors[rotor_index][i] - 'A' - 
 						prev_shift + new_shift) % 26 + 'A';
@@ -60,6 +63,20 @@ void set_ring_setting(enigma *enigma_struct,int rotor_index, char letter) {
 	enigma_struct->curr_ring_setting[rotor_index] = new_shift;
 
 }
+
+void add_plug_board(enigma *enigma_struct, char plug_one, char plug_two) {
+	assert(enigma_struct != NULL);
+	int isValid = (plug_one >= 'A' && plug_one <= 'Z') ? 1 : 0;
+	assert(isValid == 1);
+	isValid = (plug_two >= 'A' && plug_two <= 'Z') ? 1 : 0;
+	assert(isValid == 1);
+
+	assert(enigma_struct->plug_board[plug_one - 'A'] == 0);
+	enigma_struct->plug_board[plug_one - 'A'] = plug_two;
+	enigma_struct->plug_board[plug_two - 'A'] = plug_one;
+	
+}
+
 void set_indexes(enigma *enigma_struct, char *indexes) {
 	assert(enigma_struct != NULL);
 	assert(indexes != NULL);
@@ -121,6 +138,11 @@ static char encrypt_char(enigma *enigma_struct, char letter) {
 	assert(enigma_struct != NULL);
 	increment_rotors(enigma_struct);
 
+	//First Plug Board
+	if (enigma_struct->plug_board[letter - 'A'] != 0) {
+		letter = enigma_struct->plug_board[letter - 'A'];
+	}
+
 	//Iterate through rotors
 	int curr_index = (enigma_struct->indexes[0] + letter - 'A') % 26;	
 	int len = enigma_struct->num_rotors;
@@ -158,6 +180,12 @@ static char encrypt_char(enigma *enigma_struct, char letter) {
 	}
 	assert(index != -1);
 	curr_index = (26 + index - enigma_struct->indexes[0]) % 26;
+	
+	//Last Plug Board
+	if (enigma_struct->plug_board[curr_index] != 0) {
+		return enigma_struct->plug_board[curr_index];
+	}
+
 	return curr_index + 'A';
 }
 

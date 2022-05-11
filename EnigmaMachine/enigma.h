@@ -8,6 +8,7 @@ typedef struct enigma {
 	char *reflector;
 	int *indexes;
 	int *curr_ring_setting;
+	char plug_board[24];
 } enigma;
 
 //method prototypes
@@ -18,5 +19,6 @@ void add_reflector(enigma *, char *);
 void free_enigma(enigma *);
 char *encrypt_text(enigma *, char *);
 void set_ring_setting(enigma *, int, char);
+void add_plug_board(enigma *, char, char);
 
 #endif

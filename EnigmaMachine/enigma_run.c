@@ -17,6 +17,8 @@ int main() {
 	set_indexes(enigma_struct, "DOG");
 	
 	set_ring_setting(enigma_struct, 0, 'B');
+	
+	add_plug_board(enigma_struct, 'E', 'B');
 
 	//Get word to be encrypted
 	char buff[1000];
@@ -27,6 +29,7 @@ int main() {
 	//Encrypt word
 	char *output = encrypt_text(enigma_struct, buff);
 	printf("Encypted/Decrypted Enigma cypher: %s\n", output);
+	
 	//Free all malloc memory
 	free_enigma(enigma_struct);
 	free(output);

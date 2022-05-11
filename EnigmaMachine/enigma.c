@@ -142,10 +142,10 @@ static char encrypt_char(enigma *enigma_struct, char letter) {
 static void increment_rotors(enigma *enigma_struct) {
 	assert(enigma_struct != NULL);
 	int num_rotors = enigma_struct->num_rotors;
-	enigma_struct->indexes[0]++;
+	enigma_struct->indexes[0] = (enigma_struct->indexes[0] + 1) % 26;
 	for (int i = 0; i < num_rotors - 1; i++) {
 		if (enigma_struct->indexes[i] == 0) {
-			enigma_struct->indexes[i + 1]++;
+			enigma_struct->indexes[i + 1] = (enigma_struct->indexes[i+1] + 1) % 26;
 		}
 		else {
 			break;

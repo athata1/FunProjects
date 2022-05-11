@@ -11,3 +11,7 @@ This program utilizes different pathfinding algorithms from graph theory to find
    - e: Place end node
    - w: place walls
    - Enter: Run the selected pathfinding algorithm
+4. When program is running, colors will appear to represent the following:
+   - Magenta: found and selected node
+   - Yellow:  found but not selected node
+   - BLUE: Represents the path found by the algorithm

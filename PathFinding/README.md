@@ -15,3 +15,8 @@ This program utilizes different pathfinding algorithms from graph theory to find
    - Magenta: found and selected node
    - Yellow:  found but not selected node
    - BLUE: Represents the path found by the algorithm
+
+## Images of program running
+<img src="images/img1.png" width="250" height="250" />
+<img src="images/img2.png" width=250 height=250 />
+

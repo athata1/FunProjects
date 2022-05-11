@@ -17,10 +17,11 @@ This program utilizes different pathfinding algorithms from graph theory to find
    - BLUE: Represents the path found by the algorithm
 
 ## Images of program running
-<table>
+<table style="border: none">
   <tr>
     <td valign="top"><img src="images/img1.png" width="250" height="250" /></td>
     <td valign="top"><img src="images/img2.png" width=250 height=250 /></td>
-  </tr>
+    <td valign="top"><img src="images/img3.png" width=250 height=250 /></td>
+   </tr>
 </table>
 

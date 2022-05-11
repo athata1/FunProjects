@@ -29,15 +29,37 @@ void add_rotor(enigma *enigma_struct, char *rotor) {
 	
 	enigma_struct->rotors[num_rotors] = malloc(sizeof(char) * 27);
 	strncpy(enigma_struct->rotors[num_rotors], rotor, strlen(rotor));
-	enigma_struct->rotors[num_rotors][strlen(rotor)] = '\n';
+	enigma_struct->rotors[num_rotors][strlen(rotor)] = '\0';
 
 	enigma_struct->indexes = realloc(enigma_struct->indexes, sizeof(int) * 
 								     (num_rotors + 1));
 	enigma_struct->indexes[num_rotors] = 0;
+	
+	enigma_struct->curr_ring_setting = realloc(enigma_struct->curr_ring_setting, 
+											   sizeof(int) * (num_rotors + 1));
+	enigma_struct->curr_ring_setting[num_rotors] = 0;
 	enigma_struct->num_rotors++;
 
 }
 
+void set_ring_setting(enigma *enigma_struct,int rotor_index, char letter) {
+	assert(enigma_struct != NULL);
+	assert(rotor_index < enigma_struct->num_rotors);
+	int isValid = (letter >= 'A' && letter <= 'Z') ? 1 : 0;
+	assert(isValid == 1);
+
+	int prev_shift = enigma_struct->curr_ring_setting[rotor_index];
+	int new_shift = letter - 'A';
+	printf("%d %d\n", prev_shift, new_shift);
+	printf("%s\n", enigma_struct->rotors[rotor_index]);
+	for (int i = 0; i < 26; i++) {
+		char new_char = (enigma_struct->rotors[rotor_index][i] - 'A' - 
+						prev_shift + new_shift) % 26 + 'A';
+		enigma_struct->rotors[rotor_index][i] = new_char; 
+	}
+	enigma_struct->curr_ring_setting[rotor_index] = new_shift;
+
+}
 void set_indexes(enigma *enigma_struct, char *indexes) {
 	assert(enigma_struct != NULL);
 	assert(indexes != NULL);

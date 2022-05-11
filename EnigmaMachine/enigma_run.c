@@ -15,6 +15,8 @@ int main() {
 	add_reflector(enigma_struct, "YRUHQSLDPXNGOKMIEBFZCWVJAT");
 
 	set_indexes(enigma_struct, "DOG");
+	
+	set_ring_setting(enigma_struct, 0, 'B');
 
 	//Get word to be encrypted
 	char buff[1000];

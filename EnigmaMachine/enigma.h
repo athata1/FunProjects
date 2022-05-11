@@ -7,6 +7,7 @@ typedef struct enigma {
 	char **rotors;
 	char *reflector;
 	int *indexes;
+	int *curr_ring_setting;
 } enigma;
 
 //method prototypes
@@ -16,5 +17,6 @@ void set_indexes(enigma *, char *);
 void add_reflector(enigma *, char *);
 void free_enigma(enigma *);
 char *encrypt_text(enigma *, char *);
+void set_ring_setting(enigma *, int, char);
 
 #endif

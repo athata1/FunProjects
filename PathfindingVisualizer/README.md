@@ -16,6 +16,9 @@ This program utilizes different pathfinding algorithms from graph theory to find
    - Yellow:  found but not selected node
    - BLUE: Represents the path found by the algorithm
 
+## Future Changes:
+1. Window on right of GUI explaining the key controls
+2. More Pathfinging Algorithms
 ## Images of program running
 <table style="border: none">
   <tr>

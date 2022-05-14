@@ -38,6 +38,7 @@ public class NonogramProbThread implements Runnable{
         }
     }
     private void helper2(int depth, ArrayList<Integer> currentIndexes, String[] arr, int[] rule) {
+        //If all indexes have been placed, do more checks and add to probabilities
         if (depth == rule.length) {
             int[] row = new int[arr.length];
             Arrays.fill(row,0);

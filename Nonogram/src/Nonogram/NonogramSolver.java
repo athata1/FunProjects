@@ -335,132 +335,79 @@ public class NonogramSolver {
             }
         }
         remainder = placeholderRemainder;
-        int val = spacesLeft - (rule.length - 1);
 
+        //Simplified version of 15 - (15 - spaceLeft + (rule.length - 1))
+        int val = spacesLeft - (rule.length - 1);
         index = arr.length - 1;
         for (int r = rule.length - 1; r >= 0; r--)
         {
+            if (val > rule[r]) {
+                for (int i = 0; i < rule[r]; i++) {
+                    arr[index--] = "";
+                }
+                index -= spacesPerGap;
+                if (remainder != 0) {
+                    remainder--;
+                    index--;
+                }
+                continue;
+            }
             if (r == rule.length - 1)
             {
-                if (val > rule[r])
+                for (int i = 0; i < val; i++)
                 {
-                    for (int i = 0; i < rule[r]; i++)
-                    {
-                        arr[index--] = "";
-                    }
-                    for (int i = 0; i < spacesPerGap; i++)
-                    {
-                        index--;
-                    }
-                    if (remainder != 0)
-                    {
-                        remainder--;
-                        index--;
-                    }
+                    arr[index--] = "";
                 }
-                else
+                for (int i = 0; i < rule[r] - val; i++)
                 {
-                    for (int i = 0; i < val; i++)
-                    {
-                        arr[index--] = "";
-                    }
-                    for (int i = 0; i < rule[r] - val; i++)
-                    {
-                        index--;
-                    }
-                    for (int i = 0; i < spacesPerGap; i++)
-                    {
-                        index--;
-                    }
-                    if (remainder != 0)
-                    {
-                        remainder--;
-                        index--;
-                    }
+                    index--;
+                }
+                index -= spacesPerGap;
+                if (remainder != 0)
+                {
+                    remainder--;
+                    index--;
                 }
                 continue;
             }
             if (r == 0)
             {
-                if (val > rule[r])
+                for (int i = 0; i < rule[r] - val; i++)
                 {
-                    for (int i = 0; i < rule[r]; i++)
-                    {
-                        arr[index--] = "";
-                    }
-                    for (int i = 0; i < spacesPerGap; i++)
-                    {
-                        index--;
-                    }
-                    if (remainder != 0)
-                    {
-                        remainder--;
-                        index--;
-                    }
+                    index--;
                 }
-                else
+                for (int i = 0; i < val; i++)
                 {
-                    for (int i = 0; i < rule[r] - val; i++)
-                    {
-                        index--;
-                    }
-                    for (int i = 0; i < val; i++)
-                    {
-                        arr[index--] = "";
-                    }
-                    for (int i = 0; i < spacesPerGap; i++)
-                    {
-                        index--;
-                    }
-                    if (remainder != 0)
-                    {
-                        remainder--;
-                        index--;
-                    }
+                    arr[index--] = "";
+                }
+                index -= spacesPerGap;
+                if (remainder != 0) {
+                    remainder--;
+                    index--;
                 }
                 continue;
             }
-            if (rule[r] < val)
+
+            //In middle
+            int firstHalf = val/2;
+            int secondHalf = val/2 + val%2;
+            for (int i = 0; i < firstHalf; i++)
             {
-                for (int i = 0; i < rule[r]; i++)
-                {
-                    arr[index--] = "";
-                }
-                for (int i = 0; i < spacesPerGap; i++)
-                {
-                    index--;
-                }
-                if (remainder != 0)
-                {
-                    remainder--;
-                    index--;
-                }
+                arr[index--] = "";
             }
-            else
+            for (int i = 0; i < rule[r] - firstHalf - secondHalf; i++)
             {
-                int firstHalf = val/2;
-                int secondHalf = val/2 + val%2;
-                for (int i = 0; i < firstHalf; i++)
-                {
-                    arr[index--] = "";
-                }
-                for (int i = 0; i < rule[r] - firstHalf - secondHalf; i++)
-                {
-                    index--;
-                }
-                for (int i = 0; i < secondHalf; i++)
-                {
-                    arr[index--] = "";
-                }
-                for (int i = 0; i < spacesPerGap; i++)
-                {
-                    index--;
-                }
-                if (remainder != 0)
-                {
-                    remainder--;
-                    index--;
-                }
+                index--;
+            }
+            for (int i = 0; i < secondHalf; i++)
+            {
+                arr[index--] = "";
+            }
+            index -= spacesPerGap;
+            if (remainder != 0)
+            {
+                remainder--;
+                index--;
             }
         }
         if (isRow)

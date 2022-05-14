@@ -58,16 +58,22 @@ public class NonogramProbThread implements Runnable{
             }
             return;
         }
+
+        //Find theoretical longest value of line of compacted together
         int longestVal = 0;
         for (int i = depth; i < rule.length; i++) {
             longestVal += rule[i];
             longestVal++;
         }
         longestVal--;
+
+        //Find initial start value
         int start = 0;
         if (currentIndexes.size() != 0)
             start = currentIndexes.get(currentIndexes.size() - 1) + rule[depth - 1] + 1;
         for (int i = start; i < arr.length - longestVal + 1; i++) {
+
+            //Condition checking to see if index should be placed in this spot
             if (rule[depth] + i < arr.length && arr[rule[depth] + i].equals("S"))
                 continue;
             if (i - 1 >= 0 && arr[i - 1].equals("S"))

@@ -96,6 +96,8 @@ public class NonogramProbThread implements Runnable{
             currentIndexes.add(i);
             helper2(depth + 1, currentIndexes, arr, rule);
             currentIndexes.remove(currentIndexes.size() - 1);
+
+            //If whole rule is black, increment past rule size for next statement
             if (countBlack == rule[depth]) {
                 i += rule[depth] - 1;
             }

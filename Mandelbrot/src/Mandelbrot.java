@@ -2,12 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class Mandelbrot extends JPanel implements ActionListener {
+public class Mandelbrot extends JPanel implements ActionListener, KeyListener {
 
     int size;
     double currXMin;
@@ -18,6 +20,9 @@ public class Mandelbrot extends JPanel implements ActionListener {
     HashMap<Integer, Color> colors;
     Timer tm = new Timer(10, this);
     public Mandelbrot() {
+        addKeyListener(this);
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(true);
         this.size = 400;
         this.currXMin = -2.5 + .05;
         this.currXMax = 2.5 + .05;
@@ -30,16 +35,20 @@ public class Mandelbrot extends JPanel implements ActionListener {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        requestFocus(true);
         Image im = getImage();
         g.drawImage(im, 0,0,400,400, null);
-        //tm.start();
+        tm.start();
     }
 
-    double currVel = 0.1;
+    double velHolder = 0.1;
+    double currVel = velHolder;
     public void actionPerformed(ActionEvent e) {
-        //tm.stop();
-        if (currXMin + currVel >= currXMax - currVel || currYMin + currVel >= currYMax - currVel)
+        tm.stop();
+        while (currXMin + currVel >= currXMax - currVel || currYMin + currVel >= currYMax - currVel) {
             currVel /= 100;
+            velHolder = currVel;
+        }
         currXMin += currVel;
         currXMax -= currVel;
         currYMax -= currVel;
@@ -95,6 +104,38 @@ public class Mandelbrot extends JPanel implements ActionListener {
         }
 
         return count;
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        if (e.getKeyChar() == '-' ) {
+            if (currVel == 0) {
+                currVel = velHolder;
+            }
+            if (currVel > 0)
+                currVel *= -1;
+        }
+        else if (e.getKeyChar() == '=') {
+            if (currVel == 0) {
+                currVel = velHolder;
+            }
+            if (currVel < 0)
+                currVel *= -1;
+        }
+        else if (e.getKeyChar() == '0') {
+            velHolder = currVel;
+            currVel = 0;
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 
     public static void main(String[] args) {

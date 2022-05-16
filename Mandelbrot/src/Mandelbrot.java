@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class Mandelbrot extends JPanel {
+public class Mandelbrot extends JPanel implements ActionListener {
 
     int size;
     double currXMin;
@@ -16,13 +16,13 @@ public class Mandelbrot extends JPanel {
     double currYMax;
     int limit;
     HashMap<Integer, Color> colors;
-    //Timer tm = new Timer(10, this);
+    Timer tm = new Timer(10, this);
     public Mandelbrot() {
-        this.size = 360;
-        this.currXMin = -2.5;
-        this.currXMax = 2.5;
-        this.currYMin = -2.5;
-        this.currYMax = 2.5;
+        this.size = 400;
+        this.currXMin = -2.5 + .05;
+        this.currXMax = 2.5 + .05;
+        this.currYMin = -2.5 - 1.25;
+        this.currYMax = 2.5 - 1.25;
         this.limit = 100;
         colors = new HashMap<>();
 
@@ -35,12 +35,15 @@ public class Mandelbrot extends JPanel {
         //tm.start();
     }
 
+    double currVel = 0.1;
     public void actionPerformed(ActionEvent e) {
         //tm.stop();
-        currXMin += 0.001;
-        currXMax -= 0.001;
-        currYMax -= 0.001;
-        currYMin += 0.001;
+        if (currXMin + currVel >= currXMax - currVel || currYMin + currVel >= currYMax - currVel)
+            currVel /= 100;
+        currXMin += currVel;
+        currXMax -= currVel;
+        currYMax -= currVel;
+        currYMin += currVel;
         repaint();
     }
 
@@ -55,9 +58,12 @@ public class Mandelbrot extends JPanel {
                     im.setRGB(r,c, new Color(0,0,0).getRGB());
                 }
                 else {
-                    double bright = map(bound, 0, limit, 0, 1);
+                    /*double bright = map(bound, 0, limit, 0, 1);
                     int color = (int) map(Math.sqrt(bright), 0, 1, 0, 255);
-                    im.setRGB(r,c, new Color(0, color, color).getRGB());
+                    im.setRGB(r,c, new Color(0, color, color).getRGB());*/
+
+                    float bright = (float)Math.sqrt((float)bound / limit);
+                    im.setRGB(r,c, Color.getHSBColor(bright, 1,1).getRGB());
                 }
             }
         }
@@ -82,7 +88,7 @@ public class Mandelbrot extends JPanel {
             a = aa + ca;
             b = bb + cb;
 
-            if (Math.abs(a + b) > 16) {
+            if (Math.abs(a*a + b*b) > 16) {
                 break;
             }
             count++;

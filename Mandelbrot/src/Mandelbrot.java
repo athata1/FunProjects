@@ -108,6 +108,23 @@ public class Mandelbrot extends JPanel implements ActionListener, KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
+        if (e.getKeyChar() == 'w') {
+            currXMin -= velHolder;
+            currXMax -= velHolder;
+
+        }
+        if (e.getKeyChar() == 's') {
+            currXMin += velHolder;
+            currXMax += velHolder;
+        }
+        if (e.getKeyChar() == 'd') {
+            currYMin += velHolder;
+            currYMax += velHolder;
+        }
+        if (e.getKeyChar() == 'a') {
+            currYMin -= velHolder;
+            currYMax -= velHolder;
+        }
         if (e.getKeyChar() == '-' ) {
             if (currVel == 0) {
                 currVel = velHolder;

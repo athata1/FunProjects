@@ -21,10 +21,10 @@ public class CatBreeds {
             InputStream responseStream = connection.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream));
             jsonString = reader.readLine();
+            JSONObject obj = new JSONObject(jsonString);
+            System.out.println(obj.getInt("length"));
+            System.out.println(obj.getString("fact"));
         }
-        JSONObject obj = new JSONObject(jsonString);
-        System.out.println(obj.getInt("length"));
-        System.out.println(obj.getString("fact"));
         connection.disconnect();
     }
 }

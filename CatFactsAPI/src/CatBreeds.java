@@ -17,7 +17,7 @@ public class CatBreeds {
         connection.setRequestMethod("GET");
         int status = connection.getResponseCode();
         String jsonString = "";
-        if (status == 200) {
+        if (status/100 == 2) {
             InputStream responseStream = connection.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(responseStream));
             jsonString = reader.readLine();

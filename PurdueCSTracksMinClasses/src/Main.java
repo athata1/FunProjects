@@ -4,12 +4,19 @@ public class Main {
     static Track software;
     static Track systems;
     public static void main(String[] args) throws Exception {
-        software = new Systems();
-        systems = new Algorithms();
-        TreeSet<Integer> requiredCourses = getTotalCourses(software, systems);
-        TreeSet<Integer> totalElectives = getTotalElectives(software, systems, requiredCourses);
-        TreeSet<Integer> ans = findSmallestNumberOfCourses(requiredCourses, totalElectives);
+        SmallestNumberOfClasses classes = new SmallestNumberOfClasses();
 
+        classes.toggleComputationalScience(false);
+        classes.toggleComputerGraphics(false);
+        classes.toggleDatabases(false);
+        classes.toggleAlgorithms(false);
+        classes.toggleMachineInteligence(true);
+        classes.toggleProgrammingLanguage(false);
+        classes.toggleSecurity(false);
+        classes.toggleSoftware(true);
+        classes.toggleSystems(true);
+
+        TreeSet<Integer> ans = classes.getMinClasses();
         System.out.println(ans);
         ArrayList<String> output = new ArrayList<>();
         for (Integer num: ans) {

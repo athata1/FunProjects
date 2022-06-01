@@ -1,13 +1,12 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.TreeSet;
 import java.util.Scanner;
 
 public class Track {
     String fileName;
-    TreeSet<String> required;
-    TreeSet<String> elective;
+    TreeSet<Integer> required;
+    TreeSet<Integer> elective;
     public Track(String fileName) {
         this.fileName = fileName;
         required = new TreeSet<>();
@@ -22,11 +21,13 @@ public class Track {
                 String s = scan.nextLine();
                 if (s.equals(""))
                     break;
-                required.add(s);
+                CourseDatabase.put(s);
+                required.add(CourseDatabase.getInt(s));
             }
             while (scan.hasNextLine()) {
                 String s = scan.nextLine();
-                elective.add(s);
+                CourseDatabase.put(s);
+                elective.add(CourseDatabase.getInt(s));
             }
         }
         catch (FileNotFoundException e) {
@@ -34,7 +35,7 @@ public class Track {
         }
     }
 
-    public boolean isCompleted(TreeSet<String> courses) {
+    public boolean isCompleted(TreeSet<Integer> courses) {
         return false;
     }
 }

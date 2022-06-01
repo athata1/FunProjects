@@ -7,22 +7,22 @@ public class Software extends Track{
     }
 
     @Override
-    public boolean isCompleted(TreeSet<String> courses) {
-        for (String s: super.required) {
+    public boolean isCompleted(TreeSet<Integer> courses) {
+        for (Integer s: super.required) {
             if (!courses.contains(s)) {
                 return false;
             }
         }
 
-        if (courses.contains(("CS354")) && courses.contains("CS352")) {
+        if (courses.contains(CourseDatabase.getInt(("CS354"))) && courses.contains(CourseDatabase.getInt("CS352"))) {
             return true;
         }
-        if (!courses.contains("CS354") && !courses.contains("CS352")) {
+        if (!courses.contains(CourseDatabase.getInt("CS354")) && !courses.contains(CourseDatabase.getInt("CS352"))) {
             return false;
         }
 
-        for (String s: super.elective) {
-            if (s.equals("CS354") || s.equals("CS352"))
+        for (Integer s: super.elective) {
+            if (s == CourseDatabase.getInt("CS354") || s == CourseDatabase.getInt("CS352"))
                 continue;
             if (courses.contains(s))
                 return true;

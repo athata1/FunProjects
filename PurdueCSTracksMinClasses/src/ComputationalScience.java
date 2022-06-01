@@ -6,31 +6,31 @@ public class ComputationalScience extends Track{
     }
 
     @Override
-    public boolean isCompleted(TreeSet<String> courses) {
-        for (String s: super.required) {
+    public boolean isCompleted(TreeSet<Integer> courses) {
+        for (Integer s: super.required) {
             if (!courses.contains(s))
                 return false;
         }
 
-        if (!courses.contains("MA266") && !courses.contains("MA366"))
+        if (!courses.contains(CourseDatabase.getInt("MA266")) && !courses.contains(CourseDatabase.getInt("MA366")))
             return false;
 
-        if (!courses.contains("CS373") && !courses.contains("CS473")
-                && !courses.contains("CS478") &&
-                !courses.contains("IE336") && !courses.contains("ECE301"))
+        if (!courses.contains(CourseDatabase.getInt("CS373")) && !courses.contains(CourseDatabase.getInt("CS473"))
+                && !courses.contains(CourseDatabase.getInt("CS478")) &&
+                !courses.contains(CourseDatabase.getInt("IE336")) && !courses.contains(CourseDatabase.getInt("ECE301")))
             return false;
 
-        if (!courses.contains("CS352") && !courses.contains("CS353") && !courses.contains("CS354"))
+        if (!courses.contains(CourseDatabase.getInt("CS352")) && !courses.contains(CourseDatabase.getInt("CS353")) && !courses.contains(CourseDatabase.getInt("CS354")))
             return false;
 
         int matches = 0;
-        for (String s: super.elective) {
-            if (s.equals("CS373") || s.equals("CS473")
-                    || s.equals("CS478") ||
-                    s.equals("IE336") || s.equals("ECE301"))
+        for (Integer s: super.elective) {
+            if (s.equals(CourseDatabase.getInt("CS373")) || s.equals(CourseDatabase.getInt("CS473"))
+                    || s.equals(CourseDatabase.getInt("CS478")) ||
+                    s.equals(CourseDatabase.getInt("IE336")) || s.equals(CourseDatabase.getInt("ECE301")))
                 return false;
 
-            if (s.equals("CS352") || s.equals("CS353") || s.equals("CS354"))
+            if (s.equals(CourseDatabase.getInt("CS352")) || s.equals(CourseDatabase.getInt("CS353")) || s.equals(CourseDatabase.getInt("CS354")))
                 continue;
 
             if (courses.contains(s)) {

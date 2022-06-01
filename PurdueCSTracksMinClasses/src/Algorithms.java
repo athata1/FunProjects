@@ -7,29 +7,29 @@ public class Algorithms extends Track{
     }
 
     @Override
-    public boolean isCompleted(TreeSet<String> courses) {
-        for (String s: super.required) {
+    public boolean isCompleted(TreeSet<Integer> courses) {
+        for (Integer s: super.required) {
             if (!courses.contains(s))
                 return false;
         }
 
-        if (!courses.contains("CS352") && !courses.contains("CS354"))
+        if (!courses.contains(CourseDatabase.getInt("CS352")) && !courses.contains(CourseDatabase.getInt("CS354")))
             return false;
 
-        if (!courses.contains("CS373") && !courses.contains("CS471"))
+        if (!courses.contains(CourseDatabase.getInt("CS373")) && !courses.contains(CourseDatabase.getInt("CS471")))
             return false;
 
         int matches = 0;
-        for (String s: super.elective) {
-            if (s.equals("MA341") || s.equals("MA353") || s.equals("MA362")
-                    || s.equals("MA366") || s.equals("MA385") || s.equals("MA421")
-                    || s.equals("MA453"))
+        for (Integer s: super.elective) {
+            if (s == CourseDatabase.getInt("MA341") || s == CourseDatabase.getInt("MA353") || s == CourseDatabase.getInt("MA362")
+                    || s == CourseDatabase.getInt("MA366") || s == CourseDatabase.getInt("MA385") || s == CourseDatabase.getInt("MA421")
+                    || s == CourseDatabase.getInt("MA453"))
                 continue;
 
-            if (s.equals("CS352") || s.equals("CS354"))
+            if (s == CourseDatabase.getInt("CS352") || s == CourseDatabase.getInt("CS354"))
                 continue;
 
-            if (s.equals("CS373") || s.equals("CS471"))
+            if (s == CourseDatabase.getInt("CS373") || s == CourseDatabase.getInt("CS471"))
                 continue;
 
             if (courses.contains(s)) {
@@ -40,9 +40,9 @@ public class Algorithms extends Track{
         }
 
 
-        if (courses.contains("MA341") || courses.contains("MA353") || courses.contains("MA362")
-            || courses.contains("MA366") || courses.contains("MA385") || courses.contains("MA421")
-            || courses.contains("MA453")) {
+        if (courses.contains(CourseDatabase.getInt("MA341")) || courses.contains(CourseDatabase.getInt("MA353")) || courses.contains(CourseDatabase.getInt("MA362"))
+            || courses.contains(CourseDatabase.getInt("MA366")) || courses.contains(CourseDatabase.getInt("MA385")) || courses.contains(CourseDatabase.getInt("MA421"))
+            || courses.contains(CourseDatabase.getInt("MA453"))) {
             matches++;
         }
 

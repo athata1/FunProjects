@@ -4,29 +4,41 @@ public class Main {
     static Track software;
     static Track systems;
     public static void main(String[] args) throws Exception {
-        software = new ProgrammingLanguage();
-        systems = new Databases();
-        TreeSet<String> requiredCourses = getTotalCourses(software, systems);
-        TreeSet<String> totalElectives = getTotalElectives(software, systems, requiredCourses);
+        software = new Systems();
+        systems = new Algorithms();
+        TreeSet<Integer> requiredCourses = getTotalCourses(software, systems);
+        TreeSet<Integer> totalElectives = getTotalElectives(software, systems, requiredCourses);
+        TreeSet<Integer> ans = findSmallestNumberOfCourses(requiredCourses, totalElectives);
 
-        TreeSet<String> output = findSmallestNumberOfCourses(requiredCourses, totalElectives);
-        System.out.println(output);
+        System.out.println(ans);
+        ArrayList<String> output = new ArrayList<>();
+        for (Integer num: ans) {
+            output.add(CourseDatabase.getCourse(num));
+        }
+        Collections.sort(output);
+        String s = "[";
+        for (String str: output) {
+            s += str + ", ";
+        }
+        s = s.substring(0, s.length() - 2) + "]";
+        System.out.println(s);
     }
-    public static TreeSet<String> findSmallestNumberOfCourses(TreeSet<String> requiredCourses, TreeSet<String> remainingCourses) {
-        Queue<TreeSet<String>[]> queue = new LinkedList<>();
+
+    public static TreeSet<Integer> findSmallestNumberOfCourses(TreeSet<Integer> requiredCourses, TreeSet<Integer> remainingCourses) {
+        Queue<TreeSet<Integer>[]> queue = new LinkedList<>();
         queue.add(new TreeSet[]{requiredCourses,remainingCourses});
         System.out.println(remainingCourses);
         while (!queue.isEmpty()) {
             int size = queue.size();
             System.out.println(size);
             for (int i = 0; i < size; i++) {
-                TreeSet<String>[] stackVal = queue.poll();
-                TreeSet<String> currCourses = stackVal[0];
-                TreeSet<String> remaining = stackVal[1];
-                for (String s: remaining) {
-                    TreeSet<String> newCurr = new TreeSet<String>(currCourses);
+                TreeSet<Integer>[] stackVal = queue.poll();
+                TreeSet<Integer> currCourses = stackVal[0];
+                TreeSet<Integer> remaining = stackVal[1];
+                for (Integer s: remaining) {
+                    TreeSet<Integer> newCurr = new TreeSet<Integer>(currCourses);
                     newCurr.add(s);
-                    TreeSet<String> newRemaining = new TreeSet<String>(remaining);
+                    TreeSet<Integer> newRemaining = new TreeSet<Integer>(remaining);
                     newRemaining.remove(s);
                     if (software.isCompleted(newCurr) && systems.isCompleted(newCurr))
                         return newCurr;
@@ -37,22 +49,22 @@ public class Main {
         return null;
     }
 
-    public static TreeSet<String> getTotalElectives(Track software, Track systems,
-                                                    TreeSet<String> required) {
-        TreeSet<String> output = new TreeSet<String>();
-        for (String s: software.elective) {
+    public static TreeSet<Integer> getTotalElectives(Track software, Track systems,
+                                                    TreeSet<Integer> required) {
+        TreeSet<Integer> output = new TreeSet<Integer>();
+        for (Integer s: software.elective) {
             if (!required.contains(s))
                 output.add(s);
         }
-        for (String s: systems.elective) {
+        for (Integer s: systems.elective) {
             if (!required.contains(s))
                 output.add(s);
         }
         return output;
     }
 
-    public static TreeSet<String> getTotalCourses(Track software, Track systems) {
-        TreeSet<String> output = new TreeSet<String>();
+    public static TreeSet<Integer> getTotalCourses(Track software, Track systems) {
+        TreeSet<Integer> output = new TreeSet<Integer>();
         output.addAll(software.required);
         output.addAll(systems.required);
         return output;

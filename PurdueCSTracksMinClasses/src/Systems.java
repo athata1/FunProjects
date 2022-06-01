@@ -7,14 +7,14 @@ public class Systems extends Track{
     }
 
     @Override
-    public boolean isCompleted(TreeSet<String> courses) {
-        for (String s: super.required) {
+    public boolean isCompleted(TreeSet<Integer> courses) {
+        for (Integer s: super.required) {
             if (!courses.contains(s)) {
                 return false;
             }
         }
         int matches = 0;
-        for (String s: super.elective) {
+        for (Integer s: super.elective) {
             if (courses.contains(s))
                 matches++;
             if (matches == 3)

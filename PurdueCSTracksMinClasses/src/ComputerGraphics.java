@@ -7,28 +7,28 @@ public class ComputerGraphics extends Track{
     }
 
     @Override
-    public boolean isCompleted(TreeSet<String> courses) {
-        for (String s: super.required) {
+    public boolean isCompleted(TreeSet<Integer> courses) {
+        for (Integer s: super.required) {
             if (!courses.contains(s)) {
                 return false;
             }
         }
 
         int matches = 0;
-        if (!courses.contains("CS373") && !courses.contains("CS434")
-            && !courses.contains("CS471"))
+        if (!courses.contains(CourseDatabase.getInt("CS373")) && !courses.contains(CourseDatabase.getInt("CS434"))
+            && !courses.contains(CourseDatabase.getInt("CS471")))
             return false;
 
         int count = -1;
-        if (courses.contains("CS373"))
+        if (courses.contains(CourseDatabase.getInt("CS373")))
             count++;
-        if (courses.contains("CS434"))
+        if (courses.contains(CourseDatabase.getInt("CS434")))
             count++;
-        if (courses.contains("CS471"))
+        if (courses.contains(CourseDatabase.getInt("CS471")))
             count++;
         matches += count;
-        for (String s: super.elective) {
-            if (s.equals("CS373") || s.equals("CS434") || s.equals("CS471"))
+        for (Integer s: super.elective) {
+            if (s == CourseDatabase.getInt("CS373") || s == CourseDatabase.getInt("CS434") || s == CourseDatabase.getInt("CS471"))
                 continue;
             if (courses.contains(s)) {
                 matches++;

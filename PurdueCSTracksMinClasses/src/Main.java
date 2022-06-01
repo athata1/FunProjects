@@ -6,13 +6,13 @@ public class Main {
     public static void main(String[] args) throws Exception {
         SmallestNumberOfClasses classes = new SmallestNumberOfClasses();
 
-        classes.toggleComputationalScience(false);
-        classes.toggleComputerGraphics(false);
-        classes.toggleDatabases(false);
-        classes.toggleAlgorithms(false);
+        classes.toggleComputationalScience(true);
+        classes.toggleComputerGraphics(true);
+        classes.toggleDatabases(true);
+        classes.toggleAlgorithms(true);
         classes.toggleMachineInteligence(true);
-        classes.toggleProgrammingLanguage(false);
-        classes.toggleSecurity(false);
+        classes.toggleProgrammingLanguage(true);
+        classes.toggleSecurity(true);
         classes.toggleSoftware(true);
         classes.toggleSystems(true);
 

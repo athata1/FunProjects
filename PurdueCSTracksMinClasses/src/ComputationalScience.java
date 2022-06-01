@@ -25,12 +25,14 @@ public class ComputationalScience extends Track{
 
         int matches = 0;
         for (Integer s: super.elective) {
-            if (s.equals(CourseDatabase.getInt("CS373")) || s.equals(CourseDatabase.getInt("CS473"))
-                    || s.equals(CourseDatabase.getInt("CS478")) ||
-                    s.equals(CourseDatabase.getInt("IE336")) || s.equals(CourseDatabase.getInt("ECE301")))
-                return false;
+            if (s == CourseDatabase.getInt("MA366") || s == CourseDatabase.getInt("MA266"))
+                continue;
+            if (s == (CourseDatabase.getInt("CS373")) || s == (CourseDatabase.getInt("CS473"))
+                    || s == (CourseDatabase.getInt("CS478")) ||
+                    s == (CourseDatabase.getInt("IE336")) || s ==CourseDatabase.getInt("ECE301"))
+                continue;
 
-            if (s.equals(CourseDatabase.getInt("CS352")) || s.equals(CourseDatabase.getInt("CS353")) || s.equals(CourseDatabase.getInt("CS354")))
+            if (s == (CourseDatabase.getInt("CS352")) || s == (CourseDatabase.getInt("CS353")) || s == (CourseDatabase.getInt("CS354")))
                 continue;
 
             if (courses.contains(s)) {

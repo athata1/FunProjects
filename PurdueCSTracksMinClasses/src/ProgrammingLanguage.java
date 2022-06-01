@@ -26,13 +26,13 @@ public class ProgrammingLanguage extends Track{
         if (matches >= 3)
             return true;
         for (Integer s: super.elective) {
-            if (courses.contains(CourseDatabase.getInt("CS307")) || courses.contains(CourseDatabase.getInt("CS408")))
+            if (s == (CourseDatabase.getInt("CS307")) || s == (CourseDatabase.getInt("CS408")))
                 continue;
 
-            if (courses.contains(CourseDatabase.getInt("CS348")) || courses.contains(CourseDatabase.getInt("CS448")))
+            if (s == (CourseDatabase.getInt("CS348")) || s == (CourseDatabase.getInt("CS448")))
                 continue;
 
-            if (courses.contains(CourseDatabase.getInt("MA385")) || courses.contains(CourseDatabase.getInt("MA453")))
+            if (s == (CourseDatabase.getInt("MA385")) || s == (CourseDatabase.getInt("MA453")))
                 continue;
 
             if (courses.contains(s))

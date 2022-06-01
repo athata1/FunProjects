@@ -23,7 +23,7 @@ public class MachineIntelligence extends Track{
         }
 
         for (Integer s: super.elective) {
-            if (s.equals(CourseDatabase.getInt("CS471")) || s.equals(CourseDatabase.getInt("CS473")))
+            if (s == (CourseDatabase.getInt("CS471")) || s == (CourseDatabase.getInt("CS473")))
                 continue;
 
             if (courses.contains(s))

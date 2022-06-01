@@ -14,7 +14,7 @@ public class Software extends Track{
             }
         }
 
-        if (courses.contains("CS354") && courses.contains("CS352")) {
+        if (courses.contains(("CS354")) && courses.contains("CS352")) {
             return true;
         }
         if (!courses.contains("CS354") && !courses.contains("CS352")) {

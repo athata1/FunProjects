@@ -33,4 +33,8 @@ public class Track {
             System.out.println("Cannot find file");
         }
     }
+
+    public boolean isCompleted(TreeSet<String> courses) {
+        return false;
+    }
 }

@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.TreeSet;
@@ -5,10 +6,12 @@ import java.util.TreeSet;
 public class SmallestNumberOfClasses {
     boolean[] switchList;
     Track[] trackList;
+    HashMap<Integer, Integer> frequencyCount;
     private final TreeSet<Integer> requiredCourses;
-    private final TreeSet<Integer> totalElectives;
-
+    private TreeSet<Integer> totalElectives;
+    int count = 0;
     public SmallestNumberOfClasses() {
+        frequencyCount = new HashMap<>();
         requiredCourses = new TreeSet<>();
         totalElectives = new TreeSet<>();
         switchList = new boolean[9];
@@ -19,20 +22,39 @@ public class SmallestNumberOfClasses {
         toggleComputerGraphics(switchList[1]);
         toggleDatabases(switchList[2]);
         toggleAlgorithms(switchList[3]);
-        toggleMachineInteligence(switchList[4]);
+        toggleMachineIntelligence(switchList[4]);
         toggleProgrammingLanguage(switchList[5]);
         toggleSecurity(switchList[6]);
         toggleSoftware(switchList[7]);
         toggleSystems(switchList[8]);
+        for (boolean b: switchList) {
+            count += b ? 1 : 0;
+        }
     }
     public TreeSet<Integer> getMinClasses() {
         toggleAll();
         getRequiredClasses();
         getAllElectives();
+
+        /*
+         * Special Note: This is an optimization meant to help when there are too little courses in the required
+         * courses. This optimization can lead to a non-optimal but close solution. If the program can complete
+         * without optimization, then remove it from code.
+         */
+        for (Integer n: totalElectives) {
+            if (frequencyCount.get(n) == count) {
+                requiredCourses.add(n);
+                totalElectives.remove(n);
+                break;
+            }
+        }
+        //System.out.println(requiredCourses);
+        //System.out.println(totalElectives);
         Queue<TreeSet<Integer>[]> queue = new LinkedList<>();
         queue.add(new TreeSet[]{requiredCourses,totalElectives});
         while (!queue.isEmpty()) {
             int size = queue.size();
+            //System.out.println(size);
             for (int i = 0; i < size; i++) {
                 TreeSet<Integer>[] stackVal = queue.poll();
                 TreeSet<Integer> currCourses = stackVal[0];
@@ -43,15 +65,7 @@ public class SmallestNumberOfClasses {
                     TreeSet<Integer> newRemaining = new TreeSet<Integer>(remaining);
                     newRemaining.remove(s);
 
-                    boolean failFlag = false;
-                    for (int j = 0; j < trackList.length; j++) {
-                        if (switchList[j] == false)
-                            continue;
-                        Track t = trackList[j];
-                        if (!t.isCompleted(newCurr)) {
-                            failFlag = true;
-                        }
-                    }
+                    boolean failFlag = allCoursesSatisfied(newCurr);
                     if (!failFlag) {
                         return newCurr;
                     }
@@ -61,6 +75,19 @@ public class SmallestNumberOfClasses {
         }
         return null;
     }
+
+    private boolean allCoursesSatisfied(TreeSet<Integer> newCurr) {
+        for (int j = 0; j < trackList.length; j++) {
+            if (switchList[j] == false)
+                continue;
+            Track t = trackList[j];
+            if (!t.isCompleted(newCurr)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void getAllElectives() {
         for (int i = 0; i < trackList.length; i++) {
             if (switchList[i] == false)
@@ -68,9 +95,12 @@ public class SmallestNumberOfClasses {
             for (int n: trackList[i].elective) {
                 if (requiredCourses.contains(n))
                     continue;
+
+                frequencyCount.put(n, frequencyCount.getOrDefault(n,0) + 1);
                 totalElectives.add(n);
             }
         }
+
     }
     private void getRequiredClasses() {
         for (int i = 0; i < trackList.length; i++) {
@@ -104,7 +134,7 @@ public class SmallestNumberOfClasses {
             trackList[3] = new Algorithms();
     }
 
-    public void toggleMachineInteligence(boolean b) {
+    public void toggleMachineIntelligence(boolean b) {
         switchList[4] = b;
         if (b)
             trackList[4] = new MachineIntelligence();

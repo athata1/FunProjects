@@ -4,17 +4,29 @@ public class Main {
     static Track software;
     static Track systems;
     public static void main(String[] args) throws Exception {
+
+        HashMap<Integer, String> map = new HashMap<>();
+        map.put(1, "CG");
+        map.put(2, "D");
+        map.put(3, "A");
+        map.put(4, "MI");
+        map.put(5, "PL");
+        map.put(6, "Sec");
+        map.put(7, "Sof");
+        map.put(8, "Sys");
+        map.put(0, "CS");
+
         SmallestNumberOfClasses classes = new SmallestNumberOfClasses();
 
         classes.toggleComputationalScience(true);
-        classes.toggleComputerGraphics(true);
-        classes.toggleDatabases(true);
-        classes.toggleAlgorithms(true);
-        classes.toggleMachineInteligence(true);
-        classes.toggleProgrammingLanguage(true);
-        classes.toggleSecurity(true);
+        classes.toggleComputerGraphics(false);
+        classes.toggleDatabases(false);
+        classes.toggleAlgorithms(false);
+        classes.toggleMachineInteligence(false);
+        classes.toggleProgrammingLanguage(false);
+        classes.toggleSecurity(false);
         classes.toggleSoftware(true);
-        classes.toggleSystems(true);
+        classes.toggleSystems(false);
 
         TreeSet<Integer> ans = classes.getMinClasses();
         System.out.println(ans);

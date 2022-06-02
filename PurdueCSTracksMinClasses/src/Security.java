@@ -19,7 +19,7 @@ public class Security extends Track{
 
         if (courses.contains(CourseDatabase.getInt("CS348"))
                 || courses.contains(CourseDatabase.getInt("CS448")) ||
-            courses.contains(CourseDatabase.getInt("CS473")))
+                courses.contains(CourseDatabase.getInt("CS473")))
             matches++;
         if (courses.contains(CourseDatabase.getInt("CS352")))
             matches++;

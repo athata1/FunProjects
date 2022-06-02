@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.TreeSet;
@@ -6,8 +5,8 @@ import java.util.TreeSet;
 public class SmallestNumberOfClasses {
     boolean[] switchList;
     Track[] trackList;
-    TreeSet<Integer> requiredCourses;
-    TreeSet<Integer> totalElectives;
+    private final TreeSet<Integer> requiredCourses;
+    private final TreeSet<Integer> totalElectives;
 
     public SmallestNumberOfClasses() {
         requiredCourses = new TreeSet<>();
@@ -15,15 +14,25 @@ public class SmallestNumberOfClasses {
         switchList = new boolean[9];
         trackList = new Track[9];
     }
+    private void toggleAll() {
+        toggleComputationalScience(switchList[0]);
+        toggleComputerGraphics(switchList[1]);
+        toggleDatabases(switchList[2]);
+        toggleAlgorithms(switchList[3]);
+        toggleMachineInteligence(switchList[4]);
+        toggleProgrammingLanguage(switchList[5]);
+        toggleSecurity(switchList[6]);
+        toggleSoftware(switchList[7]);
+        toggleSystems(switchList[8]);
+    }
     public TreeSet<Integer> getMinClasses() {
+        toggleAll();
         getRequiredClasses();
         getAllElectives();
         Queue<TreeSet<Integer>[]> queue = new LinkedList<>();
         queue.add(new TreeSet[]{requiredCourses,totalElectives});
-        System.out.println(totalElectives);
         while (!queue.isEmpty()) {
             int size = queue.size();
-            System.out.println(size);
             for (int i = 0; i < size; i++) {
                 TreeSet<Integer>[] stackVal = queue.poll();
                 TreeSet<Integer> currCourses = stackVal[0];

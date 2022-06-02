@@ -1,38 +1,22 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.TreeSet;
+import java.util.*;
 
 public class SmallestNumberOfClasses {
-    boolean[] switchList;
-    Track[] trackList;
+    ArrayList<Track> trackList;
     HashMap<Integer, Integer> frequencyCount;
     private final TreeSet<Integer> requiredCourses;
     private TreeSet<Integer> totalElectives;
-    int count = 0;
     public SmallestNumberOfClasses() {
         frequencyCount = new HashMap<>();
         requiredCourses = new TreeSet<>();
         totalElectives = new TreeSet<>();
-        switchList = new boolean[9];
-        trackList = new Track[9];
+        trackList = new ArrayList<>();
     }
-    private void toggleAll() {
-        toggleComputationalScience(switchList[0]);
-        toggleComputerGraphics(switchList[1]);
-        toggleDatabases(switchList[2]);
-        toggleAlgorithms(switchList[3]);
-        toggleMachineIntelligence(switchList[4]);
-        toggleProgrammingLanguage(switchList[5]);
-        toggleSecurity(switchList[6]);
-        toggleSoftware(switchList[7]);
-        toggleSystems(switchList[8]);
-        for (boolean b: switchList) {
-            count += b ? 1 : 0;
-        }
+
+    public void addTrack(Track t) {
+        trackList.add(t);
     }
+
     public TreeSet<Integer> getMinClasses() {
-        toggleAll();
         getRequiredClasses();
         getAllElectives();
 
@@ -42,7 +26,7 @@ public class SmallestNumberOfClasses {
          * without optimization, then remove it from code.
          */
         for (Integer n: totalElectives) {
-            if (frequencyCount.get(n) == count) {
+            if (frequencyCount.get(n) == trackList.size()) {
                 requiredCourses.add(n);
                 totalElectives.remove(n);
                 break;
@@ -65,8 +49,8 @@ public class SmallestNumberOfClasses {
                     TreeSet<Integer> newRemaining = new TreeSet<Integer>(remaining);
                     newRemaining.remove(s);
 
-                    boolean failFlag = allCoursesSatisfied(newCurr);
-                    if (!failFlag) {
+                    boolean successFlag = allCoursesSatisfied(newCurr);
+                    if (successFlag) {
                         return newCurr;
                     }
                     queue.add(new TreeSet[]{newCurr, newRemaining});
@@ -77,22 +61,17 @@ public class SmallestNumberOfClasses {
     }
 
     private boolean allCoursesSatisfied(TreeSet<Integer> newCurr) {
-        for (int j = 0; j < trackList.length; j++) {
-            if (switchList[j] == false)
-                continue;
-            Track t = trackList[j];
+        for (Track t: trackList) {
             if (!t.isCompleted(newCurr)) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     private void getAllElectives() {
-        for (int i = 0; i < trackList.length; i++) {
-            if (switchList[i] == false)
-                continue;
-            for (int n: trackList[i].elective) {
+        for (int i = 0; i < trackList.size(); i++) {
+            for (int n: trackList.get(i).elective) {
                 if (requiredCourses.contains(n))
                     continue;
 
@@ -103,64 +82,8 @@ public class SmallestNumberOfClasses {
 
     }
     private void getRequiredClasses() {
-        for (int i = 0; i < trackList.length; i++) {
-            if (switchList[i] == false)
-                continue;
-            requiredCourses.addAll(trackList[i].required);
+        for (int i = 0; i < trackList.size(); i++) {
+            requiredCourses.addAll(trackList.get(i).required);
         }
-    }
-
-    public void toggleComputationalScience(boolean b) {
-        switchList[0] = b;
-        if (b)
-            trackList[0] = new ComputationalScience();
-    }
-
-    public void toggleComputerGraphics(boolean b) {
-        switchList[1] = b;
-        if (b)
-            trackList[1] = new ComputerGraphics();
-    }
-
-    public void toggleDatabases(boolean b) {
-        switchList[2] = b;
-        if (b)
-            trackList[2] = new Databases();
-    }
-
-    public void toggleAlgorithms(boolean b) {
-        switchList[3] = b;
-        if (b)
-            trackList[3] = new Algorithms();
-    }
-
-    public void toggleMachineIntelligence(boolean b) {
-        switchList[4] = b;
-        if (b)
-            trackList[4] = new MachineIntelligence();
-    }
-
-    public void toggleProgrammingLanguage(boolean b) {
-        switchList[5] = b;
-        if (b)
-            trackList[5] = new ProgrammingLanguage();
-    }
-
-    public void toggleSecurity(boolean b) {
-        switchList[6] = b;
-        if (b)
-            trackList[6] = new Security();
-    }
-
-    public void toggleSoftware(boolean b) {
-        switchList[7] = b;
-        if (b)
-            trackList[7] = new Software();
-    }
-
-    public void toggleSystems(boolean b) {
-        switchList[8] = b;
-        if (b)
-            trackList[8] = new Systems();
     }
 }

@@ -16,15 +16,9 @@ public class Main {
 
         SmallestNumberOfClasses classes = new SmallestNumberOfClasses();
 
-        classes.toggleComputationalScience(true);
-        classes.toggleComputerGraphics(false);
-        classes.toggleDatabases(true);
-        classes.toggleAlgorithms(false);
-        classes.toggleMachineIntelligence(false);
-        classes.toggleProgrammingLanguage(false);
-        classes.toggleSecurity(false);
-        classes.toggleSoftware(false);
-        classes.toggleSystems(false);
+        classes.addTrack(new Software());
+        classes.addTrack(new Systems());
+
         TreeSet<Integer> ans = classes.getMinClasses();
         System.out.println(ans);
         ArrayList<String> output = new ArrayList<>();

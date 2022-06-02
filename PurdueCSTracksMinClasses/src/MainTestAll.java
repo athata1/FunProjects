@@ -6,23 +6,24 @@ import java.util.TreeSet;
 public class MainTestAll {
     public static void main(String[] args) throws Exception {
 
-        HashMap<Integer, String> map = new HashMap<>();
-        map.put(1, "CG");
-        map.put(2, "D");
-        map.put(3, "A");
-        map.put(4, "MI");
-        map.put(5, "PL");
-        map.put(6, "Sec");
-        map.put(7, "Sof");
-        map.put(8, "Sys");
-        map.put(0, "CS");
+        HashMap<Integer, Track> map = new HashMap<>();
+        map.put(0, new ComputationalScience());
+        map.put(1, new ComputerGraphics());
+        map.put(2, new Databases());
+        map.put(3, new Algorithms());
+        map.put(4, new MachineIntelligence());
+        map.put(5, new ProgrammingLanguage());
+        map.put(6, new Security());
+        map.put(7, new Software());
+        map.put(8, new Systems());
+
 
         for (int i = 0; i < 9; i++) {
             for (int j = i + 1; j < 9; j++) {
-                System.out.println(map.get(i) + " " + map.get(j));
+                System.out.println(map.get(i).getName() + " " + map.get(j).getName());
                 SmallestNumberOfClasses classes = new SmallestNumberOfClasses();
-                classes.switchList[i] = true;
-                classes.switchList[j] = true;
+                classes.addTrack(map.get(i));
+                classes.addTrack(map.get(j));
                 TreeSet<Integer> ans = classes.getMinClasses();
                 //System.out.println(ans);
                 ArrayList<String> output = new ArrayList<>();

@@ -34,7 +34,9 @@ public class Track {
             System.out.println("Cannot find file");
         }
     }
-
+    public String getName() {
+        return getClass().toString().split(" ")[1];
+    }
     public boolean isCompleted(TreeSet<Integer> courses) {
         return false;
     }
